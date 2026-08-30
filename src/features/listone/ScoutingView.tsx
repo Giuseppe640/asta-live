@@ -3,10 +3,10 @@ import { useAuctionStore } from "../../store/useAuctionStore";
 import { ConfidenceDot, FasciaBadge, RoleBadge } from "../../components/Badges";
 import type { Role, Watch } from "../../types";
 
-const WATCH_OPTIONS: { value: Watch | undefined; label: string; className: string }[] = [
-  { value: "must", label: "MUST", className: "bg-emerald-600 text-white" },
-  { value: undefined, label: "OK", className: "bg-neutral-700 text-neutral-200" },
-  { value: "no", label: "NO", className: "bg-rose-600 text-white" },
+const WATCH_OPTIONS: { value: Watch | undefined; label: string; title: string; className: string }[] = [
+  { value: "must", label: "VOGLIO", title: "Da prendere assolutamente: alzo il budget massimo per lui", className: "bg-emerald-600 text-white" },
+  { value: undefined, label: "OK", title: "Nessuna preferenza particolare", className: "bg-neutral-700 text-neutral-200" },
+  { value: "no", label: "NO", title: "Non mi interessa: non me lo suggerire come priorità", className: "bg-rose-600 text-white" },
 ];
 
 export function ScoutingView() {
@@ -74,7 +74,7 @@ export function ScoutingView() {
                   <p className="truncate text-sm font-medium text-neutral-100">{p.name}</p>
                   <p className="truncate text-xs text-neutral-500">{p.team}</p>
                 </div>
-                <div className="text-right">
+                <div className="text-right" title="Valore stimato prima dell'asta">
                   <p className="text-sm font-semibold tabular-nums text-neutral-200">
                     {p.pricing.fairSeed != null ? Math.round(p.pricing.fairSeed) : "—"}
                   </p>
@@ -93,6 +93,7 @@ export function ScoutingView() {
                       <button
                         key={opt.label}
                         type="button"
+                        title={opt.title}
                         onClick={() => setWatch(p.id, opt.value)}
                         className={`h-7 rounded px-2 text-[11px] font-bold ${
                           p.watch === opt.value || (opt.value === undefined && !p.watch) ? opt.className : "bg-neutral-800 text-neutral-500"

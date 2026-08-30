@@ -27,13 +27,13 @@ const COLOR_TEXT: Record<PriceColor, string> = {
 function buildReasons(player: Player, live: LivePricing): string[] {
   const reasons: string[] = [];
   const techAdj = player.pricing.technicalAdjustment;
-  if (techAdj > 1.001) reasons.push(`correttori tecnici positivi (×${techAdj.toFixed(2)})`);
-  if (techAdj < 0.999) reasons.push(`correttori tecnici negativi (×${techAdj.toFixed(2)})`);
-  reasons.push(`domanda ${live.demand.demandLabel}: ${live.demand.demanders} vogliono / ${live.demand.supply} rimasti`);
-  if (live.inflationLive > 1.02) reasons.push(`inflazione di ruolo/fascia ×${live.inflationLive.toFixed(2)}`);
-  if (player.pricing.confidence < 50) reasons.push("confidence bassa: valore indicativo, non un intero");
-  if (player.watch === "must") reasons.push("in watchlist: MUST");
-  if (player.departureRisk && player.departureRisk >= 30) reasons.push(`rischio cessione ${player.departureRisk}`);
+  if (techAdj > 1.001) reasons.push(`prezzo alzato: buoni segnali (titolare fisso, rigorista…)`);
+  if (techAdj < 0.999) reasons.push(`prezzo abbassato: segnali negativi (poco titolare, rischio cessione…)`);
+  reasons.push(`domanda ${live.demand.demandLabel}: lo vogliono in ${live.demand.demanders}, ne restano ${live.demand.supply} simili`);
+  if (live.inflationLive > 1.02) reasons.push(`i giocatori di questo ruolo/livello si stanno pagando cari in questa asta`);
+  if (player.pricing.confidence < 50) reasons.push("dati incerti: meglio guardare il range che il numero preciso");
+  if (player.watch === "must") reasons.push("è nella tua lista \"da prendere assolutamente\"");
+  if (player.departureRisk && player.departureRisk >= 30) reasons.push(`rischio che cambi squadra prima che inizi il campionato: ${player.departureRisk}/100`);
   return reasons.slice(0, 3);
 }
 
@@ -68,14 +68,15 @@ export function OverlayCard({
 
       <div className="mt-4 flex items-end justify-between">
         <div>
-          <div className="text-xs uppercase tracking-wide text-neutral-500">Mio max</div>
+          <div className="text-xs uppercase tracking-wide text-neutral-500">Offri fino a</div>
           <div className={`text-4xl font-bold tabular-nums ${COLOR_TEXT[color]}`}>{live.personalMax}</div>
         </div>
         <div className="text-right text-sm text-neutral-400">
           <div>
-            fair live <span className="font-semibold text-neutral-200">{live.fairLive != null ? Math.round(live.fairLive) : "—"}</span>
+            vale circa <span className="font-semibold text-neutral-200">{live.fairLive != null ? Math.round(live.fairLive) : "—"}</span>
           </div>
-          <div className="mt-0.5">
+          <div className="mt-0.5 flex items-center justify-end gap-1">
+            <span className="text-[10px] uppercase text-neutral-500">domanda</span>
             <DemandLabelBadge label={live.demand.demandLabel} />
           </div>
         </div>
@@ -83,17 +84,17 @@ export function OverlayCard({
 
       {live.displayRange && (
         <p className="mt-1 text-xs text-neutral-500">
-          confidence bassa → range {Math.round(live.displayRange.low)}–{Math.round(live.displayRange.high)}
+          dati pochi/incerti: vale probabilmente tra {Math.round(live.displayRange.low)} e {Math.round(live.displayRange.high)}
         </p>
       )}
 
       <p className="mt-1 text-xs text-neutral-500">
-        {live.demand.demanders} vogliono / {live.demand.supply} rimasti nella fascia · legal max {live.legalMax}
+        lo vogliono in {live.demand.demanders}, ne restano {live.demand.supply} simili · puoi arrivare fino a {live.legalMax} senza sballare la rosa
       </p>
 
       {rosterUnclosable && (
         <p className="mt-2 rounded bg-rose-500/10 px-2 py-1 text-xs font-semibold text-rose-400">
-          ⚠ rosa non più chiudibile con slot aperti
+          ⚠ attenzione: con questo budget rischi di non riuscire a completare la rosa
         </p>
       )}
 
@@ -139,24 +140,24 @@ export function OverlayCard({
       </div>
 
       <button type="button" onClick={() => setShowDetail((s) => !s)} className="mt-3 h-8 text-xs text-neutral-500 underline">
-        {showDetail ? "nascondi scheda" : "scheda: mercato, FVM, seed, confidence, overpay"}
+        {showDetail ? "nascondi i dettagli" : "perché questo prezzo? →"}
       </button>
 
       {showDetail && (
         <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 rounded-lg bg-neutral-950 p-3 text-xs text-neutral-400">
-          <dt>Mercato 10/500 ×2</dt>
+          <dt>Prezzo visto in altre aste</dt>
           <dd className="text-right text-neutral-200">
             {player.sourceSnapshot.market10x500 != null ? Math.round(player.sourceSnapshot.market10x500 * 2) : "—"}
           </dd>
-          <dt>FVM /1000</dt>
+          <dt>Quotazione Fantacalcio.it (FVM)</dt>
           <dd className="text-right text-neutral-200">{player.sourceSnapshot.fvm1000 ?? "—"}</dd>
-          <dt>Fair seed</dt>
+          <dt>Valore di partenza (prima dell'asta)</dt>
           <dd className="text-right text-neutral-200">{player.pricing.fairSeed != null ? Math.round(player.pricing.fairSeed) : "—"}</dd>
-          <dt>Fair live</dt>
+          <dt>Valore adesso (con l'asta in corso)</dt>
           <dd className="text-right text-neutral-200">{live.fairLive != null ? Math.round(live.fairLive) : "—"}</dd>
-          <dt>Confidence</dt>
-          <dd className="text-right text-neutral-200">{player.pricing.confidence}</dd>
-          <dt>Overpay</dt>
+          <dt>Affidabilità della stima</dt>
+          <dd className="text-right text-neutral-200">{player.pricing.confidence}/100</dd>
+          <dt>Stai offrendo più del consigliato?</dt>
           <dd className="text-right text-neutral-200">{currentPrice > live.personalMax ? "sì" : "no"}</dd>
           {reasons.map((r) => (
             <p key={r} className="col-span-2 mt-1 text-neutral-500">

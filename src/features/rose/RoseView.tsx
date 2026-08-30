@@ -47,38 +47,44 @@ export function RoseView() {
                   {team.roster.length}/25 · speso {budget.spent} · rimasti {budget.remaining}
                 </p>
               </div>
-              <div className="text-right">
+              <div className="text-right" title="Il massimo che questa squadra può offrire per UN giocatore, senza poi restare senza crediti per completare la rosa">
                 <p className="text-lg font-bold tabular-nums text-neutral-100">{budget.legalMax}</p>
-                <p className="text-[10px] uppercase text-neutral-500">legal max</p>
+                <p className="text-[10px] uppercase text-neutral-500">tetto per 1 giocatore</p>
               </div>
             </button>
 
             {budget.capPiano.requiresReallocation && (
               <p className="mx-3 mb-2 rounded bg-rose-500/10 px-2 py-1 text-xs font-semibold text-rose-400">
-                ⚠ PROFILO BUDGET ROTTO — riallocare {budget.capPiano.planDeficit} cr
+                ⚠ budget sforato — servono {budget.capPiano.planDeficit} crediti in più di quelli previsti, vanno spostati da un altro reparto
               </p>
             )}
             {budget.rosterUnclosable && (
-              <p className="mx-3 mb-2 rounded bg-rose-500/10 px-2 py-1 text-xs font-semibold text-rose-400">⚠ rosa non chiudibile</p>
+              <p className="mx-3 mb-2 rounded bg-rose-500/10 px-2 py-1 text-xs font-semibold text-rose-400">
+                ⚠ rischio di restare con slot vuoti e zero crediti: rallenta con gli acquisti
+              </p>
             )}
 
             {isOpen && (
               <div className="border-t border-neutral-800 p-3">
                 {team.id === myTeamId && (
-                  <select
-                    value={team.profile}
-                    onChange={(e) => setTeamProfile(team.id, e.target.value as TeamProfile)}
-                    className="mb-3 h-10 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-2 text-sm text-neutral-200"
-                  >
-                    {(["balanced_md", "super_forward", "depth"] as const).map((p) => (
-                      <option key={p} value={p}>
-                        {PROFILE_LABELS[p]}
-                      </option>
-                    ))}
-                    {team.profile === "custom" && <option value="custom">{PROFILE_LABELS.custom}</option>}
-                  </select>
+                  <>
+                    <p className="mb-1 text-[11px] text-neutral-500">Come vuoi dividere i crediti tra i reparti:</p>
+                    <select
+                      value={team.profile}
+                      onChange={(e) => setTeamProfile(team.id, e.target.value as TeamProfile)}
+                      className="mb-3 h-10 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-2 text-sm text-neutral-200"
+                    >
+                      {(["balanced_md", "super_forward", "depth"] as const).map((p) => (
+                        <option key={p} value={p}>
+                          {PROFILE_LABELS[p]}
+                        </option>
+                      ))}
+                      {team.profile === "custom" && <option value="custom">{PROFILE_LABELS.custom}</option>}
+                    </select>
+                  </>
                 )}
 
+                <p className="mb-1 text-[11px] text-neutral-500">Giocatori presi e budget ancora disponibile, reparto per reparto:</p>
                 <div className="grid grid-cols-4 gap-1.5 text-center text-xs">
                   {ROLES.map((role) => (
                     <div key={role} className="rounded-lg bg-neutral-950 p-2">
@@ -88,13 +94,21 @@ export function RoseView() {
                       <p className="text-neutral-400">
                         {budget.ownedCount[role]}/{{ P: 3, D: 8, C: 8, A: 6 }[role]}
                       </p>
-                      <p className="font-semibold text-neutral-100">cap {budget.capPiano.capPiano[role]}</p>
-                      {budget.capPiano.holes[role] > 0 && <p className="text-rose-400">buco {budget.capPiano.holes[role]}</p>}
+                      <p className="font-semibold text-neutral-100" title="Budget ancora previsto per questo reparto">
+                        {budget.capPiano.capPiano[role]} cr
+                      </p>
+                      {budget.capPiano.holes[role] > 0 && (
+                        <p className="text-rose-400" title="Hai speso più del previsto in questo reparto">
+                          sforato di {budget.capPiano.holes[role]}
+                        </p>
+                      )}
                     </div>
                   ))}
                 </div>
 
-                <p className="mt-2 text-xs text-neutral-500">cuscino residuo: {budget.capPiano.cushionLeft} cr</p>
+                <p className="mt-2 text-xs text-neutral-500" title="Margine extra tenuto da parte per gli imprevisti, condiviso tra tutti i reparti">
+                  margine di sicurezza rimasto: {budget.capPiano.cushionLeft} cr
+                </p>
 
                 <ul className="mt-3 divide-y divide-neutral-800">
                   {team.roster

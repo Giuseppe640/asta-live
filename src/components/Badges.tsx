@@ -7,9 +7,19 @@ const ROLE_COLORS: Record<Role, string> = {
   A: "bg-rose-500/20 text-rose-300 border-rose-500/40",
 };
 
+const ROLE_NAMES: Record<Role, string> = {
+  P: "Portiere",
+  D: "Difensore",
+  C: "Centrocampista",
+  A: "Attaccante",
+};
+
 export function RoleBadge({ role }: { role: Role }) {
   return (
-    <span className={`inline-flex h-6 min-w-6 items-center justify-center rounded border px-1.5 text-xs font-semibold ${ROLE_COLORS[role]}`}>
+    <span
+      title={ROLE_NAMES[role]}
+      className={`inline-flex h-6 min-w-6 items-center justify-center rounded border px-1.5 text-xs font-semibold ${ROLE_COLORS[role]}`}
+    >
       {role}
     </span>
   );
@@ -23,9 +33,20 @@ const FASCIA_COLORS: Record<Fascia, string> = {
   D: "bg-neutral-600/20 text-neutral-400 border-neutral-600/40",
 };
 
+const FASCIA_NAMES: Record<Fascia, string> = {
+  S: "Livello: top player",
+  A: "Livello: molto forte",
+  B: "Livello: buono",
+  C: "Livello: discreto",
+  D: "Livello: economico",
+};
+
 export function FasciaBadge({ fascia, uncertain }: { fascia: Fascia; uncertain?: boolean }) {
   return (
-    <span className={`inline-flex h-6 min-w-6 items-center justify-center rounded border px-1.5 text-xs font-semibold ${FASCIA_COLORS[fascia]}`}>
+    <span
+      title={uncertain ? `${FASCIA_NAMES[fascia]} (dato incerto, pochi riferimenti di prezzo)` : FASCIA_NAMES[fascia]}
+      className={`inline-flex h-6 min-w-6 items-center justify-center rounded border px-1.5 text-xs font-semibold ${FASCIA_COLORS[fascia]}`}
+    >
       {fascia}
       {uncertain ? "?" : ""}
     </span>
@@ -35,7 +56,7 @@ export function FasciaBadge({ fascia, uncertain }: { fascia: Fascia; uncertain?:
 export function ConfidenceDot({ confidence }: { confidence: number }) {
   const color = confidence >= 75 ? "bg-emerald-400" : confidence >= 50 ? "bg-amber-400" : "bg-rose-400";
   return (
-    <span className="inline-flex items-center gap-1.5 text-xs text-neutral-400">
+    <span title={`Affidabilità della stima: ${confidence}/100`} className="inline-flex items-center gap-1.5 text-xs text-neutral-400">
       <span className={`h-2.5 w-2.5 rounded-full ${color}`} />
       {confidence}
     </span>
@@ -48,5 +69,10 @@ export function DemandLabelBadge({ label }: { label: "bassa" | "media" | "alta" 
     media: "bg-amber-500/20 text-amber-300",
     alta: "bg-rose-500/20 text-rose-300",
   } as const;
-  return <span className={`rounded px-2 py-0.5 text-xs font-semibold uppercase ${styles[label]}`}>{label}</span>;
+  const titles = {
+    bassa: "Poche squadre lo cercano: probabile chiuderlo a un buon prezzo",
+    media: "Richiesta nella media",
+    alta: "Molte squadre lo cercano: aspettati rilanci",
+  } as const;
+  return <span title={titles[label]} className={`rounded px-2 py-0.5 text-xs font-semibold uppercase ${styles[label]}`}>{label}</span>;
 }

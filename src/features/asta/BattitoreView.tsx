@@ -73,6 +73,7 @@ export function BattitoreView() {
         />
         <button
           type="button"
+          title="Annulla l'ultima assegnazione fatta"
           onClick={() => {
             undo();
             vibrate(30);
@@ -80,7 +81,7 @@ export function BattitoreView() {
           disabled={events.length === 0}
           className="h-12 min-w-16 rounded-lg bg-neutral-800 text-sm font-semibold text-neutral-300 disabled:opacity-40"
         >
-          Undo
+          Annulla
         </button>
       </div>
 
