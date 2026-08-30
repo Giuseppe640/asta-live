@@ -4,6 +4,7 @@ import { BattitoreView } from "./features/asta/BattitoreView";
 import { ScoutingView } from "./features/listone/ScoutingView";
 import { RoseView } from "./features/rose/RoseView";
 import { SyncView } from "./features/sync/SyncView";
+import { ConflictBanner } from "./components/ConflictBanner";
 import teamsSeed from "./data/teams.json";
 import { getMergedRawPlayers } from "./store/mergedSeed";
 import type { FantasyTeam } from "./types";
@@ -44,6 +45,8 @@ function App() {
       <header className="flex h-12 shrink-0 items-center justify-center border-b border-neutral-800">
         <h1 className="text-sm font-bold tracking-wide text-neutral-200">AstaLive — Fantacalcio 2026/27</h1>
       </header>
+
+      <ConflictBanner />
 
       <main className="min-h-0 flex-1 overflow-hidden">
         {tab === "battitore" && <BattitoreView />}
