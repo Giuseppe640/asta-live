@@ -1,0 +1,102 @@
+[
+  {
+    "id": "eren-jagermeister",
+    "name": "Eren Jagermeister",
+    "president": "Cesare (TU)",
+    "color": "#c084fc",
+    "budget": 1000,
+    "spent": 0,
+    "roster": [],
+    "profile": "balanced_md"
+  },
+  {
+    "id": "joga-benito",
+    "name": "JOGA BENITO",
+    "president": "Marco Sannicandro",
+    "color": "#f97316",
+    "budget": 1000,
+    "spent": 0,
+    "roster": [],
+    "profile": "balanced_md"
+  },
+  {
+    "id": "motafogo-fc",
+    "name": "Motafogo FC",
+    "president": "Luigi Terlizzi",
+    "color": "#22c55e",
+    "budget": 1000,
+    "spent": 0,
+    "roster": [],
+    "profile": "balanced_md"
+  },
+  {
+    "id": "young-girls-fc",
+    "name": "Young Girls Fc",
+    "president": "Francesco Fornelli",
+    "color": "#ec4899",
+    "budget": 1000,
+    "spent": 0,
+    "roster": [],
+    "profile": "balanced_md"
+  },
+  {
+    "id": "al-dobagl-fc",
+    "name": "Al Dobagl Fc",
+    "president": "daniber99",
+    "color": "#3b82f6",
+    "budget": 1000,
+    "spent": 0,
+    "roster": [],
+    "profile": "balanced_md"
+  },
+  {
+    "id": "pietrofc",
+    "name": "PietroFc",
+    "president": "Pietro Fornelli",
+    "color": "#eab308",
+    "budget": 1000,
+    "spent": 0,
+    "roster": [],
+    "profile": "balanced_md"
+  },
+  {
+    "id": "fc-ma-stai-schersantos",
+    "name": "F.C. Ma Stai SCHERSANTOS",
+    "president": "Enzucc",
+    "color": "#14b8a6",
+    "budget": 1000,
+    "spent": 0,
+    "roster": [],
+    "profile": "balanced_md"
+  },
+  {
+    "id": "heinekean",
+    "name": "HeineKean",
+    "president": "KevinConstant",
+    "color": "#a3e635",
+    "budget": 1000,
+    "spent": 0,
+    "roster": [],
+    "profile": "balanced_md"
+  },
+  {
+    "id": "complessato-fc",
+    "name": "Complessato FC",
+    "president": "sfuuss",
+    "color": "#f43f5e",
+    "budget": 1000,
+    "spent": 0,
+    "roster": [],
+    "profile": "balanced_md"
+  },
+  {
+    "id": "milfwall",
+    "name": "MILFWALL",
+    "president": "Austrian Painter",
+    "color": "#64748b",
+    "budget": 1000,
+    "spent": 0,
+    "roster": [],
+    "profile": "balanced_md"
+  }
+]

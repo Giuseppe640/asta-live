@@ -1,0 +1,165 @@
+{
+  "date": "2026-08-30",
+  "source": "Ricerca web, due passate: (1) tuttofantacalcio.it, fantamaster.it, sosfanta.com, sky.it calciomercato, messaggeroveneto.it, eurosport.it, tuttomercatoweb.com; (2) dazn.com, fantacalcio-online.com, goal.com, calciodangolo.com, sosfanta.com (rigoristi 2026/27, aggiornati al 25/08) + corrieredellosport.it (calciomercato live 29-30/08)",
+  "patches": [
+    {
+      "id": "6916",
+      "name": "Ahanor",
+      "starter": "ballottaggio",
+      "starterPct": 35,
+      "rumor": "Risentimento adduttori, rientro atteso fine agosto 2026 (lista infortunati Atalanta aggiornata 24/08)"
+    },
+    {
+      "id": "6046",
+      "name": "Hien",
+      "starter": "out",
+      "starterPct": 5,
+      "rumor": "Operato per lesione muscolare, rientro previsto inizio ottobre 2026: salta l'avvio di stagione"
+    },
+    {
+      "id": "6485",
+      "name": "Kristensen T.",
+      "starter": "ballottaggio",
+      "starterPct": 40,
+      "rumor": "Problema alla caviglia, tempi di recupero non precisati; Udinese valuta anche una sua cessione"
+    },
+    {
+      "id": "5918",
+      "name": "Sulemana K.",
+      "starter": "out",
+      "starterPct": 5,
+      "rumor": "Lesione al collaterale del ginocchio, rientro previsto metà ottobre 2026: salta l'avvio di stagione"
+    },
+    {
+      "id": "2766",
+      "name": "Zaniolo",
+      "starter": "out",
+      "starterPct": 15,
+      "rumor": "Uscito infortunato con l'Udinese il 30/08, in attesa degli esami strumentali"
+    },
+    {
+      "id": "6925",
+      "name": "Palma",
+      "starter": "out",
+      "starterPct": 10,
+      "rumor": "Uscito infortunato con l'Udinese il 30/08, in attesa degli esami strumentali"
+    },
+    {
+      "id": "6434",
+      "name": "Yildiz",
+      "starter": "out",
+      "starterPct": 20,
+      "rumor": "Infortunio, tempi di recupero ancora da definire secondo le fonti Juventus"
+    },
+    {
+      "id": "6956",
+      "name": "Solet",
+      "departureRisk": 65,
+      "rumor": "Saga di mercato ancora aperta: saltata la trattativa con l'Inter (dubbi medici + richiesta Udinese 25M+), ora forte interesse del Napoli dopo l'infortunio di Buongiorno"
+    },
+    {
+      "id": "7008",
+      "name": "Gimenez",
+      "departureRisk": 60,
+      "rumor": "In uscita dal Milan dopo una stagione deludente, destinazione ancora da definire a ridosso della chiusura mercato"
+    },
+    {
+      "id": "1933",
+      "name": "Mandragora",
+      "departureRisk": 35,
+      "rumor": "Vicino al ritorno al Torino, davanti alla concorrenza del Genoa (che dovrebbe prima cedere Frendrup)"
+    },
+    {
+      "id": "4911",
+      "name": "Douglas Luiz",
+      "departureRisk": 35,
+      "rumor": "Spalletti conferma fiducia pubblicamente, ma la Juventus resta aperta a una cessione con l'offerta giusta"
+    },
+    {
+      "id": "4964",
+      "name": "Vicario",
+      "starter": "fisso",
+      "starterPct": 88,
+      "rumor": "Trasferimento dal Tottenham UFFICIALE e completato (prestito con opzione, maglia numero 25): portiere titolare della Juventus"
+    },
+    {
+      "id": "2194",
+      "name": "Calhanoglu",
+      "penalties": 1,
+      "rumor": "Rigorista designato dell'Inter, nessun dubbio sulle gerarchie (fonte: guide rigoristi 2026/27)"
+    },
+    {
+      "id": "2764",
+      "name": "Martinez L.",
+      "penalties": 2,
+      "rumor": "Seconda scelta sui rigori dell'Inter dietro Calhanoglu"
+    },
+    {
+      "id": "2167",
+      "name": "Orsolini",
+      "penalties": 1,
+      "rumor": "Primo rigorista Bologna, ma il neoarrivato Dovbyk (27/32 in carriera) mette in discussione il primato"
+    },
+    {
+      "id": "6675",
+      "name": "Dovbyk",
+      "penalties": 2,
+      "rumor": "Prima alternativa sui rigori del Bologna dietro Orsolini, ottimo storico realizzativo (27/32)"
+    },
+    {
+      "id": "5800",
+      "name": "Gudmundsson A.",
+      "penalties": 1,
+      "rumor": "Primo rigorista Fiorentina davanti a Pellegrino, gerarchie da confermare col nuovo tecnico"
+    },
+    {
+      "id": "7023",
+      "name": "Pellegrino M.",
+      "penalties": 2,
+      "rumor": "Seconda scelta sui rigori della Fiorentina dietro Gudmundsson"
+    },
+    {
+      "id": "4923",
+      "name": "Colombo",
+      "penalties": 1,
+      "rumor": "Diventato il primo rigorista del Genoa dopo la cessione di Malinovskyi"
+    },
+    {
+      "id": "6010",
+      "name": "Fazzini",
+      "penalties": 1,
+      "rumor": "Candidato principale sui rigori del Cagliari dopo l'uscita di Esposito, alternative Mina/Deiola"
+    },
+    {
+      "id": "5559",
+      "name": "Da Cunha",
+      "penalties": 1,
+      "rumor": "Ha scavalcato Nico Paz come primo rigorista del Como, alternativa Douvikas"
+    },
+    {
+      "id": "2517",
+      "name": "De Bruyne",
+      "rumor": "Contende i rigori del Napoli a Hojlund dopo l'addio di Lukaku: più specialista per storico in carriera, gerarchia non ancora definita"
+    },
+    {
+      "id": "6052",
+      "name": "Hojlund",
+      "rumor": "Contende i rigori del Napoli a De Bruyne dopo l'addio di Lukaku, gerarchia non ancora definita"
+    },
+    {
+      "id": "1850",
+      "name": "Kessiè",
+      "rumor": "Neoarrivato dalla Juventus, candidato ai rigori dell'Atalanta insieme a Scamacca (3/3 la scorsa stagione); gerarchia da definire"
+    },
+    {
+      "id": "2137",
+      "name": "Scamacca",
+      "rumor": "Contende i rigori dell'Atalanta a Kessiè (perfetto 3/3 la scorsa stagione); gerarchia da definire"
+    },
+    {
+      "id": "4387",
+      "name": "Adorante",
+      "rumor": "Era il primo rigorista del Venezia la scorsa stagione, ma i neoarrivati Adams e Rrhamani sembrano scavalcarlo nelle gerarchie"
+    }
+  ]
+}

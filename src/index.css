@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-verde: #22c55e;
+  --color-giallo: #eab308;
+  --color-rosso: #ef4444;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: #0b0c10;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior-y: none;
+}
+
+button {
+  touch-action: manipulation;
+}
