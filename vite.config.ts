@@ -4,7 +4,11 @@ import { VitePWA } from 'vite-plugin-pwa'
 import { defineConfig } from 'vitest/config'
 
 // https://vite.dev/config/
+// Deploy su GitHub Pages come project site: https://<user>.github.io/asta-live/
+const BASE = '/asta-live/'
+
 export default defineConfig({
+  base: BASE,
   plugins: [
     react(),
     tailwindcss(),
@@ -18,9 +22,10 @@ export default defineConfig({
         theme_color: '#0b0c10',
         background_color: '#0b0c10',
         display: 'standalone',
-        start_url: '/',
+        start_url: BASE,
+        scope: BASE,
         icons: [
-          { src: '/favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' },
+          { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' },
         ],
       },
       workbox: {
