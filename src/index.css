@@ -4,6 +4,18 @@
   --color-verde: #22c55e;
   --color-giallo: #eab308;
   --color-rosso: #ef4444;
+
+  --color-brand-50: #f2f0ff;
+  --color-brand-400: #a78bfa;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #7c3aed;
+  --color-brand-700: #6d28d9;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Lexend", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-glow-brand: 0 0 0 1px rgba(139, 92, 246, 0.15), 0 8px 24px -8px rgba(139, 92, 246, 0.45);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
 }
 
 :root {
@@ -14,11 +26,13 @@ html,
 body,
 #root {
   height: 100%;
-  background: #0b0c10;
 }
 
 body {
   margin: 0;
+  font-family: var(--font-sans);
+  background: radial-gradient(120% 100% at 50% -10%, #1a1730 0%, #0a0a0f 55%, #08080b 100%) fixed;
+  color: #f4f4f5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior-y: none;
@@ -26,4 +40,54 @@ body {
 
 button {
   touch-action: manipulation;
+  font-family: inherit;
+}
+
+button:active {
+  transform: translateY(0.5px) scale(0.98);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3f3f46 transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  border-radius: 999px;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(139, 92, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

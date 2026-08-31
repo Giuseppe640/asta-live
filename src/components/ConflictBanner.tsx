@@ -1,3 +1,4 @@
+import { TriangleAlert } from "lucide-react";
 import { useAuctionStore } from "../store/useAuctionStore";
 
 /** §3 del piano: "Assign incompatibili → conflitto visibile, no last-write-wins". */
@@ -10,14 +11,15 @@ export function ConflictBanner() {
   if (conflicts.length === 0) return null;
 
   return (
-    <div className="shrink-0 space-y-2 border-b border-rose-900/50 bg-rose-500/10 p-3">
+    <div className="animate-fade-in-up shrink-0 space-y-2 border-b border-rose-500/20 bg-rose-500/10 p-3">
       {conflicts.map((c) => {
         const player = players.find((p) => p.id === c.playerId);
         if (!player) return null;
         return (
-          <div key={c.playerId} className="rounded-lg border border-rose-800 bg-neutral-900 p-2">
-            <p className="text-xs font-bold text-rose-400">
-              ⚠ CONFLITTO: {player.name} assegnato da due dispositivi — scegli quale tenere
+          <div key={c.playerId} className="rounded-xl border border-rose-500/30 bg-neutral-900/90 p-3 shadow-card">
+            <p className="flex items-center gap-1.5 text-xs font-bold text-rose-400">
+              <TriangleAlert className="h-4 w-4 shrink-0" />
+              CONFLITTO: {player.name} assegnato da due dispositivi — scegli quale tenere
             </p>
             <div className="mt-2 flex flex-wrap gap-1.5">
               {c.competingEvents.map((e) => {
@@ -27,8 +29,9 @@ export function ConflictBanner() {
                     key={e.id}
                     type="button"
                     onClick={() => resolveConflict(c.playerId, e.id)}
-                    className="h-10 rounded-lg bg-neutral-800 px-3 text-xs font-semibold text-neutral-100 active:bg-neutral-700"
+                    className="flex h-10 items-center gap-1.5 rounded-lg bg-white/5 px-3 text-xs font-semibold text-neutral-100 transition-colors active:bg-white/10"
                   >
+                    <span className="h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: team?.color ?? "#71717a" }} />
                     {team?.name ?? e.teamId} @ {e.price}
                   </button>
                 );

@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { ChevronDown, Gavel, Minus, Plus, TriangleAlert } from "lucide-react";
 import { ConfidenceDot, DemandLabelBadge, FasciaBadge, RoleBadge } from "../../components/Badges";
 import type { LivePricing } from "../../store/selectors";
 import type { Player } from "../../types";
@@ -14,14 +15,19 @@ function priceColor(currentPrice: number, personalMax: number, extremeOverpay: b
 }
 
 const COLOR_RING: Record<PriceColor, string> = {
-  verde: "ring-emerald-500/70 shadow-emerald-500/20",
-  giallo: "ring-amber-500/70 shadow-amber-500/20",
-  rosso: "ring-rose-500/70 shadow-rose-500/20",
+  verde: "ring-emerald-500/60 shadow-[0_0_40px_-12px_rgba(16,185,129,0.5)]",
+  giallo: "ring-amber-500/60 shadow-[0_0_40px_-12px_rgba(245,158,11,0.5)]",
+  rosso: "ring-rose-500/60 shadow-[0_0_40px_-12px_rgba(244,63,94,0.5)]",
 };
 const COLOR_TEXT: Record<PriceColor, string> = {
   verde: "text-emerald-400",
   giallo: "text-amber-400",
   rosso: "text-rose-400",
+};
+const COLOR_GLOW: Record<PriceColor, string> = {
+  verde: "from-emerald-500/10",
+  giallo: "from-amber-500/10",
+  rosso: "from-rose-500/10",
 };
 
 function buildReasons(player: Player, live: LivePricing): string[] {
@@ -57,25 +63,29 @@ export function OverlayCard({
   const bump = (delta: number) => setCurrentPrice((p) => Math.max(1, p + delta));
 
   return (
-    <div className={`rounded-2xl border border-neutral-800 bg-neutral-900 p-4 shadow-lg ring-2 transition-colors ${COLOR_RING[color]}`}>
-      <div className="flex items-center gap-2">
+    <div
+      className={`animate-fade-in-up relative overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/80 p-4 shadow-card ring-2 backdrop-blur-sm transition-all duration-300 ${COLOR_RING[color]}`}
+    >
+      <div className={`pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b ${COLOR_GLOW[color]} to-transparent`} />
+
+      <div className="relative flex items-center gap-2">
         <RoleBadge role={player.role} />
         <FasciaBadge fascia={player.fascia} uncertain={player.fasciaUncertain} />
-        <h2 className="flex-1 truncate text-lg font-semibold text-neutral-50">{player.name}</h2>
+        <h2 className="font-display flex-1 truncate text-lg font-bold text-neutral-50">{player.name}</h2>
         <ConfidenceDot confidence={player.pricing.confidence} />
       </div>
-      <p className="mt-0.5 text-sm text-neutral-500">{player.team}</p>
+      <p className="relative mt-0.5 text-sm text-neutral-500">{player.team}</p>
 
-      <div className="mt-4 flex items-end justify-between">
+      <div className="relative mt-4 flex items-end justify-between">
         <div>
-          <div className="text-xs uppercase tracking-wide text-neutral-500">Offri fino a</div>
-          <div className={`text-4xl font-bold tabular-nums ${COLOR_TEXT[color]}`}>{live.personalMax}</div>
+          <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Offri fino a</div>
+          <div className={`font-display text-5xl font-extrabold tabular-nums ${COLOR_TEXT[color]}`}>{live.personalMax}</div>
         </div>
         <div className="text-right text-sm text-neutral-400">
           <div>
             vale circa <span className="font-semibold text-neutral-200">{live.fairLive != null ? Math.round(live.fairLive) : "—"}</span>
           </div>
-          <div className="mt-0.5 flex items-center justify-end gap-1">
+          <div className="mt-1 flex items-center justify-end gap-1">
             <span className="text-[10px] uppercase text-neutral-500">domanda</span>
             <DemandLabelBadge label={live.demand.demandLabel} />
           </div>
@@ -83,48 +93,49 @@ export function OverlayCard({
       </div>
 
       {live.displayRange && (
-        <p className="mt-1 text-xs text-neutral-500">
+        <p className="relative mt-1.5 text-xs text-neutral-500">
           dati pochi/incerti: vale probabilmente tra {Math.round(live.displayRange.low)} e {Math.round(live.displayRange.high)}
         </p>
       )}
 
-      <p className="mt-1 text-xs text-neutral-500">
+      <p className="relative mt-1.5 text-xs text-neutral-500">
         lo vogliono in {live.demand.demanders}, ne restano {live.demand.supply} simili · puoi arrivare fino a {live.legalMax} senza sballare la rosa
       </p>
 
       {rosterUnclosable && (
-        <p className="mt-2 rounded bg-rose-500/10 px-2 py-1 text-xs font-semibold text-rose-400">
-          ⚠ attenzione: con questo budget rischi di non riuscire a completare la rosa
+        <p className="relative mt-2 flex items-center gap-1.5 rounded-lg bg-rose-500/10 px-2.5 py-1.5 text-xs font-semibold text-rose-400">
+          <TriangleAlert className="h-3.5 w-3.5 shrink-0" />
+          attenzione: con questo budget rischi di non riuscire a completare la rosa
         </p>
       )}
 
-      <div className="mt-4">
+      <div className="relative mt-4">
         <div className="mb-2 flex items-center gap-2">
           <button
             type="button"
             onClick={() => bump(-5)}
-            className="h-12 min-w-12 rounded-lg bg-neutral-800 text-lg font-semibold text-neutral-200 active:bg-neutral-700"
+            className="flex h-12 min-w-12 items-center justify-center rounded-xl bg-white/5 text-neutral-200 transition-colors active:bg-white/10"
           >
-            −5
+            <Minus className="h-5 w-5" />
           </button>
           <input
             type="number"
             inputMode="numeric"
             value={currentPrice}
             onChange={(e) => setCurrentPrice(Math.max(1, Number(e.target.value) || 1))}
-            className={`h-12 w-0 min-w-0 flex-1 rounded-lg border border-neutral-700 bg-neutral-950 text-center text-2xl font-bold tabular-nums ${COLOR_TEXT[color]}`}
+            className={`font-display h-12 w-0 min-w-0 flex-1 rounded-xl border border-white/10 bg-black/30 text-center text-2xl font-bold tabular-nums outline-none focus:border-brand-500/50 ${COLOR_TEXT[color]}`}
           />
           <button
             type="button"
             onClick={() => bump(5)}
-            className="h-12 min-w-12 rounded-lg bg-neutral-800 text-lg font-semibold text-neutral-200 active:bg-neutral-700"
+            className="flex h-12 min-w-12 items-center justify-center rounded-xl bg-white/5 text-neutral-200 transition-colors active:bg-white/10"
           >
-            +5
+            <Plus className="h-5 w-5" />
           </button>
           <button
             type="button"
             onClick={() => bump(10)}
-            className="h-12 min-w-12 rounded-lg bg-neutral-800 text-lg font-semibold text-neutral-200 active:bg-neutral-700"
+            className="h-12 min-w-14 rounded-xl bg-white/5 text-sm font-bold text-neutral-200 transition-colors active:bg-white/10"
           >
             +10
           </button>
@@ -133,18 +144,24 @@ export function OverlayCard({
         <button
           type="button"
           onClick={() => onAssign(currentPrice)}
-          className="h-12 w-full rounded-lg bg-emerald-600 text-base font-bold text-white active:bg-emerald-700"
+          className="flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-base font-bold text-white shadow-lg shadow-emerald-900/30 transition-transform active:scale-[0.98]"
         >
+          <Gavel className="h-4 w-4" />
           Aggiudicato a {currentPrice}
         </button>
       </div>
 
-      <button type="button" onClick={() => setShowDetail((s) => !s)} className="mt-3 h-8 text-xs text-neutral-500 underline">
-        {showDetail ? "nascondi i dettagli" : "perché questo prezzo? →"}
+      <button
+        type="button"
+        onClick={() => setShowDetail((s) => !s)}
+        className="relative mt-3 flex h-8 items-center gap-1 text-xs font-medium text-neutral-500 transition-colors hover:text-neutral-300"
+      >
+        {showDetail ? "nascondi i dettagli" : "perché questo prezzo?"}
+        <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${showDetail ? "rotate-180" : ""}`} />
       </button>
 
       {showDetail && (
-        <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 rounded-lg bg-neutral-950 p-3 text-xs text-neutral-400">
+        <dl className="animate-fade-in-up relative mt-2 grid grid-cols-2 gap-x-3 gap-y-1.5 rounded-xl border border-white/5 bg-black/30 p-3 text-xs text-neutral-400">
           <dt>Prezzo visto in altre aste</dt>
           <dd className="text-right text-neutral-200">
             {player.sourceSnapshot.market10x500 != null ? Math.round(player.sourceSnapshot.market10x500 * 2) : "—"}

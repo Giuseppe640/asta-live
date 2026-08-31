@@ -18,7 +18,7 @@ export function RoleBadge({ role }: { role: Role }) {
   return (
     <span
       title={ROLE_NAMES[role]}
-      className={`inline-flex h-6 min-w-6 items-center justify-center rounded border px-1.5 text-xs font-semibold ${ROLE_COLORS[role]}`}
+      className={`inline-flex h-6 min-w-6 items-center justify-center rounded-lg border px-1.5 text-xs font-bold ${ROLE_COLORS[role]}`}
     >
       {role}
     </span>
@@ -45,7 +45,7 @@ export function FasciaBadge({ fascia, uncertain }: { fascia: Fascia; uncertain?:
   return (
     <span
       title={uncertain ? `${FASCIA_NAMES[fascia]} (dato incerto, pochi riferimenti di prezzo)` : FASCIA_NAMES[fascia]}
-      className={`inline-flex h-6 min-w-6 items-center justify-center rounded border px-1.5 text-xs font-semibold ${FASCIA_COLORS[fascia]}`}
+      className={`inline-flex h-6 min-w-6 items-center justify-center rounded-lg border px-1.5 text-xs font-bold ${FASCIA_COLORS[fascia]}`}
     >
       {fascia}
       {uncertain ? "?" : ""}
@@ -74,5 +74,5 @@ export function DemandLabelBadge({ label }: { label: "bassa" | "media" | "alta" 
     media: "Richiesta nella media",
     alta: "Molte squadre lo cercano: aspettati rilanci",
   } as const;
-  return <span title={titles[label]} className={`rounded px-2 py-0.5 text-xs font-semibold uppercase ${styles[label]}`}>{label}</span>;
+  return <span title={titles[label]} className={`rounded-md px-2 py-0.5 text-xs font-bold uppercase ${styles[label]}`}>{label}</span>;
 }

@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { ChevronLeft, ChevronRight, Search, SearchX, Undo2 } from "lucide-react";
 import { useAuctionStore } from "../../store/useAuctionStore";
 import { computeLivePricing } from "../../store/selectors";
 import { RoleBadge, FasciaBadge } from "../../components/Badges";
@@ -64,13 +65,16 @@ export function BattitoreView() {
   return (
     <div className="flex h-full flex-col gap-3 p-3">
       <div className="flex items-center gap-2">
-        <input
-          autoFocus
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Cerca giocatore…"
-          className="h-12 flex-1 rounded-lg border border-neutral-700 bg-neutral-900 px-3 text-base text-neutral-100 placeholder:text-neutral-500"
-        />
+        <div className="relative flex-1">
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500" />
+          <input
+            autoFocus
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Cerca giocatore…"
+            className="h-12 w-full rounded-xl border border-white/10 bg-white/5 pl-9 pr-3 text-base text-neutral-100 outline-none transition-colors placeholder:text-neutral-500 focus:border-brand-500/50 focus:bg-white/[0.07]"
+          />
+        </div>
         <button
           type="button"
           title="Annulla l'ultima assegnazione fatta"
@@ -79,9 +83,9 @@ export function BattitoreView() {
             vibrate(30);
           }}
           disabled={events.length === 0}
-          className="h-12 min-w-16 rounded-lg bg-neutral-800 text-sm font-semibold text-neutral-300 disabled:opacity-40"
+          className="flex h-12 min-w-16 items-center justify-center gap-1.5 rounded-xl bg-white/5 text-sm font-semibold text-neutral-300 transition-opacity active:bg-white/10 disabled:opacity-30"
         >
-          Annulla
+          <Undo2 className="h-4 w-4" />
         </button>
       </div>
 
@@ -91,8 +95,8 @@ export function BattitoreView() {
             key={r}
             type="button"
             onClick={() => setRoleFilter(r)}
-            className={`h-9 flex-1 rounded-lg text-sm font-semibold ${
-              roleFilter === r ? "bg-violet-600 text-white" : "bg-neutral-800 text-neutral-400"
+            className={`h-9 flex-1 rounded-lg text-sm font-semibold transition-colors ${
+              roleFilter === r ? "bg-brand-500 text-white shadow-glow-brand" : "bg-white/5 text-neutral-400 active:bg-white/10"
             }`}
           >
             {r === "ALL" ? "Tutti" : r}
@@ -100,12 +104,17 @@ export function BattitoreView() {
         ))}
       </div>
 
-      {error && <p className="rounded bg-rose-500/10 px-3 py-2 text-sm font-medium text-rose-400">{error}</p>}
+      {error && <p className="rounded-lg bg-rose-500/10 px-3 py-2 text-sm font-medium text-rose-400">{error}</p>}
 
       {selectedPlayer && live ? (
         <div className="flex flex-1 flex-col gap-3 overflow-y-auto">
-          <button type="button" onClick={() => setSelectedId(null)} className="self-start text-sm text-neutral-500 underline">
-            ← torna alla ricerca
+          <button
+            type="button"
+            onClick={() => setSelectedId(null)}
+            className="flex items-center gap-0.5 self-start text-sm text-neutral-500 transition-colors hover:text-neutral-300"
+          >
+            <ChevronLeft className="h-4 w-4" />
+            torna alla ricerca
           </button>
           <OverlayCard player={selectedPlayer} live={live} onAssign={handleAssignRequest} />
         </div>
@@ -116,27 +125,35 @@ export function BattitoreView() {
               <button
                 type="button"
                 onClick={() => setSelectedId(p.id)}
-                className="flex h-14 w-full items-center gap-2.5 border-b border-neutral-800 px-1 text-left active:bg-neutral-900"
+                className="flex h-14 w-full items-center gap-2.5 rounded-xl px-2 text-left transition-colors active:bg-white/5"
               >
                 <RoleBadge role={p.role} />
                 <FasciaBadge fascia={p.fascia} uncertain={p.fasciaUncertain} />
                 <span className="flex-1 truncate text-neutral-100">{p.name}</span>
                 <span className="text-xs text-neutral-500">{p.team}</span>
+                <ChevronRight className="h-4 w-4 shrink-0 text-neutral-600" />
               </button>
             </li>
           ))}
-          {query.trim() && results.length === 0 && <li className="p-4 text-center text-sm text-neutral-500">Nessun giocatore libero trovato</li>}
+          {query.trim() && results.length === 0 && (
+            <li className="flex flex-col items-center gap-2 p-8 text-center text-sm text-neutral-500">
+              <SearchX className="h-6 w-6 text-neutral-600" />
+              Nessun giocatore libero trovato
+            </li>
+          )}
         </ul>
       )}
 
       {pickingTeamFor != null && (
-        <div className="fixed inset-0 z-20 flex items-end bg-black/60" onClick={() => setPickingTeamFor(null)}>
+        <div className="fixed inset-0 z-20 flex items-end bg-black/70 backdrop-blur-sm" onClick={() => setPickingTeamFor(null)}>
           <div
-            className="w-full rounded-t-2xl border-t border-neutral-800 bg-neutral-900 p-3 pb-6"
+            className="animate-fade-in-up w-full rounded-t-3xl border-t border-white/10 bg-neutral-900 p-4 pb-6 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
+            <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-white/10" />
             <p className="mb-3 text-center text-sm text-neutral-400">
-              Assegna <span className="font-semibold text-neutral-100">{selectedPlayer?.name}</span> a {pickingTeamFor} crediti →
+              Assegna <span className="font-semibold text-neutral-100">{selectedPlayer?.name}</span> a{" "}
+              <span className="font-semibold text-neutral-100">{pickingTeamFor}</span> crediti a…
             </p>
             <div className="grid grid-cols-2 gap-2">
               {teams.map((t) => (
@@ -144,9 +161,9 @@ export function BattitoreView() {
                   key={t.id}
                   type="button"
                   onClick={() => confirmAssign(t.id)}
-                  className="flex h-14 items-center gap-2 rounded-lg bg-neutral-800 px-3 text-left active:bg-neutral-700"
+                  className="flex h-14 items-center gap-2 rounded-xl bg-white/5 px-3 text-left transition-colors active:bg-white/10"
                 >
-                  <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: t.color }} />
+                  <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: t.color }} />
                   <span className="truncate text-sm font-medium text-neutral-100">
                     {t.name}
                     {t.id === myTeamId ? " (tu)" : ""}
