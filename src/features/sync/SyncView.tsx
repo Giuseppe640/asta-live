@@ -111,7 +111,7 @@ export function SyncView() {
   }
 
   return (
-    <div className="flex h-full flex-col gap-3 overflow-y-auto p-3">
+    <div className="flex h-full flex-col gap-3 overflow-y-auto p-3 lg:mx-auto lg:grid lg:max-w-4xl lg:grid-cols-2 lg:items-start lg:gap-4 lg:p-6">
       <Card>
         <CardTitle icon={Database}>Stato locale</CardTitle>
         <p className="mt-2 text-sm text-neutral-300">
@@ -217,22 +217,28 @@ export function SyncView() {
         </div>
       </Card>
 
-      <Card tone="danger">
-        <CardTitle icon={TriangleAlert} tone="danger">
-          Zona pericolosa
-        </CardTitle>
-        <p className="mt-1 text-xs text-neutral-500">Azzera tutte le assegnazioni e ricarica il pack dati seed.</p>
-        <button
-          type="button"
-          onClick={handleReset}
-          className="mt-3 flex h-12 w-full items-center justify-center gap-1.5 rounded-xl border border-rose-500/30 text-sm font-bold text-rose-400 transition-colors active:bg-rose-500/10"
-        >
-          <RotateCcw className="h-4 w-4" />
-          Azzera asta
-        </button>
-      </Card>
+      <div className="lg:col-span-full">
+        <Card tone="danger">
+          <CardTitle icon={TriangleAlert} tone="danger">
+            Zona pericolosa
+          </CardTitle>
+          <p className="mt-1 text-xs text-neutral-500">Azzera tutte le assegnazioni e ricarica il pack dati seed.</p>
+          <button
+            type="button"
+            onClick={handleReset}
+            className="mt-3 flex h-12 w-full items-center justify-center gap-1.5 rounded-xl border border-rose-500/30 text-sm font-bold text-rose-400 transition-colors active:bg-rose-500/10"
+          >
+            <RotateCcw className="h-4 w-4" />
+            Azzera asta
+          </button>
+        </Card>
+      </div>
 
-      {message && <p className="animate-fade-in-up rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-neutral-300">{message}</p>}
+      {message && (
+        <p className="animate-fade-in-up rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-neutral-300 lg:col-span-full">
+          {message}
+        </p>
+      )}
     </div>
   );
 }

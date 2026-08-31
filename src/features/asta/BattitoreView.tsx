@@ -1,9 +1,12 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight, Search, SearchX, Undo2 } from "lucide-react";
 import { useAuctionStore } from "../../store/useAuctionStore";
 import { computeLivePricing } from "../../store/selectors";
+import { useIsDesktop } from "../../hooks/useMediaQuery";
 import { RoleBadge, FasciaBadge } from "../../components/Badges";
 import { OverlayCard } from "./OverlayCard";
+import { TeamPickerModal } from "./TeamPickerModal";
+import { RecentPicksFeed } from "./RecentPicksFeed";
 import type { Role } from "../../types";
 
 function vibrate(pattern: number | number[]) {
@@ -19,6 +22,7 @@ export function BattitoreView() {
   const events = useAuctionStore((s) => s.events);
   const assign = useAuctionStore((s) => s.assign);
   const undo = useAuctionStore((s) => s.undo);
+  const isDesktop = useIsDesktop();
 
   const [query, setQuery] = useState("");
   const [roleFilter, setRoleFilter] = useState<Role | "ALL">("ALL");
@@ -43,6 +47,18 @@ export function BattitoreView() {
     // ricalcola quando cambia il log eventi (assegnazioni influenzano inflazione/domanda/legal_max)
   }, [selectedPlayer, players, teams, myTeamId, events.length]);
 
+  // Esc: chiude il modale se aperto, altrimenti deseleziona, altrimenti svuota la ricerca.
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key !== "Escape") return;
+      if (pickingTeamFor != null) setPickingTeamFor(null);
+      else if (selectedId != null) setSelectedId(null);
+      else if (query) setQuery("");
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [pickingTeamFor, selectedId, query]);
+
   function handleAssignRequest(price: number) {
     setPickingTeamFor(price);
   }
@@ -62,18 +78,22 @@ export function BattitoreView() {
     setQuery("");
   }
 
-  return (
-    <div className="flex h-full flex-col gap-3 p-3">
+  const searchAndFilters = (
+    <>
       <div className="flex items-center gap-2">
         <div className="relative flex-1">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500" />
           <input
+            id="battitore-search-input"
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Cerca giocatore…"
-            className="h-12 w-full rounded-xl border border-white/10 bg-white/5 pl-9 pr-3 text-base text-neutral-100 outline-none transition-colors placeholder:text-neutral-500 focus:border-brand-500/50 focus:bg-white/[0.07]"
+            className="h-12 w-full rounded-xl border border-white/10 bg-white/5 pl-9 pr-9 text-base text-neutral-100 outline-none transition-colors placeholder:text-neutral-500 focus:border-brand-500/50 focus:bg-white/[0.07]"
           />
+          <kbd className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-md border border-white/10 bg-white/5 px-1.5 py-0.5 font-mono text-[10px] text-neutral-500 lg:inline-flex">
+            /
+          </kbd>
         </div>
         <button
           type="button"
@@ -105,6 +125,75 @@ export function BattitoreView() {
       </div>
 
       {error && <p className="rounded-lg bg-rose-500/10 px-3 py-2 text-sm font-medium text-rose-400">{error}</p>}
+    </>
+  );
+
+  const resultsList = (
+    <ul className="flex-1 overflow-y-auto">
+      {results.map((p) => (
+        <li key={p.id}>
+          <button
+            type="button"
+            onClick={() => setSelectedId(p.id)}
+            className="flex h-14 w-full items-center gap-2.5 rounded-xl px-2 text-left transition-colors active:bg-white/5"
+          >
+            <RoleBadge role={p.role} />
+            <FasciaBadge fascia={p.fascia} uncertain={p.fasciaUncertain} />
+            <span className="flex-1 truncate text-neutral-100">{p.name}</span>
+            <span className="text-xs text-neutral-500">{p.team}</span>
+            <ChevronRight className="h-4 w-4 shrink-0 text-neutral-600" />
+          </button>
+        </li>
+      ))}
+      {query.trim() && results.length === 0 && (
+        <li className="flex flex-col items-center gap-2 p-8 text-center text-sm text-neutral-500">
+          <SearchX className="h-6 w-6 text-neutral-600" />
+          Nessun giocatore libero trovato
+        </li>
+      )}
+    </ul>
+  );
+
+  const teamPicker = pickingTeamFor != null && (
+    <TeamPickerModal
+      variant={isDesktop ? "dialog" : "sheet"}
+      teams={teams}
+      myTeamId={myTeamId}
+      playerName={selectedPlayer?.name}
+      price={pickingTeamFor}
+      onPick={confirmAssign}
+      onClose={() => setPickingTeamFor(null)}
+    />
+  );
+
+  if (isDesktop) {
+    return (
+      <div className="flex h-full">
+        <div className="flex h-full w-[360px] shrink-0 flex-col gap-3 overflow-y-auto border-r border-white/5 p-3 xl:w-[400px]">
+          {searchAndFilters}
+          {resultsList}
+        </div>
+        <div className="flex h-full flex-1 flex-col gap-4 overflow-y-auto p-4">
+          {selectedPlayer && live ? (
+            <div className="max-w-2xl">
+              <OverlayCard player={selectedPlayer} live={live} onAssign={handleAssignRequest} />
+            </div>
+          ) : (
+            <div className="flex max-w-2xl flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-white/10 py-16 text-center text-sm text-neutral-500">
+              <Search className="h-6 w-6 text-neutral-600" />
+              Seleziona un giocatore dalla lista per vedere il prezzo consigliato
+            </div>
+          )}
+          <RecentPicksFeed />
+        </div>
+        {teamPicker}
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex h-full flex-col gap-3 p-3">
+      {searchAndFilters}
 
       {selectedPlayer && live ? (
         <div className="flex flex-1 flex-col gap-3 overflow-y-auto">
@@ -119,61 +208,10 @@ export function BattitoreView() {
           <OverlayCard player={selectedPlayer} live={live} onAssign={handleAssignRequest} />
         </div>
       ) : (
-        <ul className="flex-1 overflow-y-auto">
-          {results.map((p) => (
-            <li key={p.id}>
-              <button
-                type="button"
-                onClick={() => setSelectedId(p.id)}
-                className="flex h-14 w-full items-center gap-2.5 rounded-xl px-2 text-left transition-colors active:bg-white/5"
-              >
-                <RoleBadge role={p.role} />
-                <FasciaBadge fascia={p.fascia} uncertain={p.fasciaUncertain} />
-                <span className="flex-1 truncate text-neutral-100">{p.name}</span>
-                <span className="text-xs text-neutral-500">{p.team}</span>
-                <ChevronRight className="h-4 w-4 shrink-0 text-neutral-600" />
-              </button>
-            </li>
-          ))}
-          {query.trim() && results.length === 0 && (
-            <li className="flex flex-col items-center gap-2 p-8 text-center text-sm text-neutral-500">
-              <SearchX className="h-6 w-6 text-neutral-600" />
-              Nessun giocatore libero trovato
-            </li>
-          )}
-        </ul>
+        resultsList
       )}
 
-      {pickingTeamFor != null && (
-        <div className="fixed inset-0 z-20 flex items-end bg-black/70 backdrop-blur-sm" onClick={() => setPickingTeamFor(null)}>
-          <div
-            className="animate-fade-in-up w-full rounded-t-3xl border-t border-white/10 bg-neutral-900 p-4 pb-6 shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-white/10" />
-            <p className="mb-3 text-center text-sm text-neutral-400">
-              Assegna <span className="font-semibold text-neutral-100">{selectedPlayer?.name}</span> a{" "}
-              <span className="font-semibold text-neutral-100">{pickingTeamFor}</span> crediti a…
-            </p>
-            <div className="grid grid-cols-2 gap-2">
-              {teams.map((t) => (
-                <button
-                  key={t.id}
-                  type="button"
-                  onClick={() => confirmAssign(t.id)}
-                  className="flex h-14 items-center gap-2 rounded-xl bg-white/5 px-3 text-left transition-colors active:bg-white/10"
-                >
-                  <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: t.color }} />
-                  <span className="truncate text-sm font-medium text-neutral-100">
-                    {t.name}
-                    {t.id === myTeamId ? " (tu)" : ""}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+      {teamPicker}
     </div>
   );
 }

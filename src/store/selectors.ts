@@ -3,7 +3,7 @@ import { computeCapPiano, computeLegalMax, computePersonalMax, isExtremeOverpay,
 import { PROFILE_QUOTAS, ROLE_SLOTS, ROLES, ROSTER_SIZE, STARTING_BUDGET } from "../lib/constants";
 import { computeDemand, type DemandFreePlayer, type DemandTeam } from "../lib/demand";
 import { computeDisplayRange, computeFairLive, computeInflationForBucket } from "../lib/pricing";
-import type { FantasyTeam, Fascia, Player, Role, TeamProfile } from "../types";
+import type { AuctionEvent, FantasyTeam, Fascia, Player, Role, TeamProfile } from "../types";
 
 export function bucketKey(role: Role, fascia: Fascia): string {
   return `${role}:${fascia}`;
@@ -169,6 +169,54 @@ export function computeLivePricing(
     overpay,
     extremeOverpay,
   };
+}
+
+export interface RecentPick {
+  eventId: string;
+  playerId: string;
+  playerName: string;
+  role: Role;
+  teamId: string;
+  teamName: string;
+  teamColor: string;
+  price: number;
+  createdAt: number;
+}
+
+/**
+ * Ultime aggiudicazioni per il feed live. Scorre `events` all'indietro (append-only, già in
+ * ordine cronologico inverso) e tiene solo gli eventi che coincidono ancora con l'assegnazione
+ * *attuale* del giocatore — un assign poi annullato o superato da un resolve_conflict non deve
+ * restare in feed, sarebbe fuorviante durante un'asta live.
+ */
+export function computeRecentPicks(players: Player[], teams: FantasyTeam[], events: AuctionEvent[], limit = 20): RecentPick[] {
+  const playerById = new Map(players.map((p) => [p.id, p]));
+  const teamById = new Map(teams.map((t) => [t.id, t]));
+  const picks: RecentPick[] = [];
+
+  for (let i = events.length - 1; i >= 0 && picks.length < limit; i -= 1) {
+    const event = events[i];
+    if (event.type !== "assign" && event.type !== "resolve_conflict") continue;
+    if (!event.playerId || !event.teamId || event.price == null) continue;
+
+    const player = playerById.get(event.playerId);
+    if (!player || player.assignedTo !== event.teamId || player.price !== event.price) continue;
+
+    const team = teamById.get(event.teamId);
+    picks.push({
+      eventId: event.id,
+      playerId: event.playerId,
+      playerName: player.name,
+      role: player.role,
+      teamId: event.teamId,
+      teamName: team?.name ?? event.teamId,
+      teamColor: team?.color ?? "#71717a",
+      price: event.price,
+      createdAt: event.createdAt,
+    });
+  }
+
+  return picks;
 }
 
 export function recomputeBandsInPlace(players: Player[]): Player[] {

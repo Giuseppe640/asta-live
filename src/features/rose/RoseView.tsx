@@ -27,7 +27,7 @@ export function RoseView() {
   }, [teams, myTeamId]);
 
   return (
-    <div className="flex h-full flex-col gap-2.5 overflow-y-auto p-3">
+    <div className="flex h-full flex-col gap-2.5 overflow-y-auto p-3 lg:grid lg:grid-cols-2 lg:items-start lg:gap-3 xl:grid-cols-3 2xl:grid-cols-4">
       {orderedTeams.map((team) => {
         const budget = computeTeamBudget(team, players);
         const isOpen = expanded === team.id;
@@ -37,7 +37,7 @@ export function RoseView() {
             key={team.id}
             className={`overflow-hidden rounded-2xl border shadow-card transition-colors ${
               isMine ? "border-brand-500/30 bg-brand-500/[0.06]" : "border-white/10 bg-neutral-900/60"
-            }`}
+            } ${isOpen ? "lg:col-span-full" : ""}`}
           >
             <button type="button" onClick={() => setExpanded(isOpen ? null : team.id)} className="flex w-full items-center gap-2.5 p-3.5 text-left">
               <span className="h-3 w-3 shrink-0 rounded-full ring-2 ring-white/10" style={{ backgroundColor: team.color }} />
