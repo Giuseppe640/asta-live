@@ -31,6 +31,8 @@ interface AuctionStore {
   roomCode: string | null;
   syncStatus: SyncStatus;
   conflicts: ConflictEntry[];
+  /** Navigazione cross-tab (Radar/Rivali → Battitore): non persistito, si consuma alla lettura. */
+  pendingPlayerSelection: string | null;
 
   _setHydrated: () => void;
   _applyRemoteEvent: (event: AuctionEvent) => void;
@@ -47,6 +49,8 @@ interface AuctionStore {
   joinRoom: (roomCode: string) => AssignResult;
   leaveRoom: () => void;
   resolveConflict: (playerId: string, chosenEventId: string) => void;
+  requestSelectPlayer: (playerId: string) => void;
+  clearPendingPlayerSelection: () => void;
 }
 
 function newDeviceId(): string {
@@ -90,8 +94,12 @@ export const useAuctionStore = create<AuctionStore>()(
       roomCode: null,
       syncStatus: "disconnected",
       conflicts: [],
+      pendingPlayerSelection: null,
 
       _setHydrated: () => set({ hydrated: true }),
+
+      requestSelectPlayer: (playerId) => set({ pendingPlayerSelection: playerId }),
+      clearPendingPlayerSelection: () => set({ pendingPlayerSelection: null }),
 
       _applyRemoteEvent: (event) => {
         const state = get();

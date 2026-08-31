@@ -43,6 +43,8 @@ export interface DemandResult {
   demandMult: number;
   demandLabel: DemandLabel;
   demanders: number;
+  /** Id delle squadre conteggiate in `demanders` (§3 Rivali/Radar) — solo esposizione, non entra nel calcolo. */
+  demanderTeamIds: string[];
   supply: number;
   coverageRatio: number;
   budgetPressure: number;
@@ -90,6 +92,7 @@ export function computeDemand(input: DemandInput): DemandResult {
       demandMult: 0.9,
       demandLabel: "bassa",
       demanders: 0,
+      demanderTeamIds: [],
       supply,
       coverageRatio,
       budgetPressure: 0,
@@ -116,6 +119,7 @@ export function computeDemand(input: DemandInput): DemandResult {
     demandMult,
     demandLabel: demandLabelFor(demandMult),
     demanders: demandersCount,
+    demanderTeamIds: demanders.map((t) => t.id),
     supply,
     coverageRatio,
     budgetPressure,

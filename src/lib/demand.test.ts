@@ -135,3 +135,28 @@ describe("computeDemand — casi limite", () => {
     expect(r.pavimentoFascia).toBe(1);
   });
 });
+
+// Regressione per l'esposizione a Rivali/Radar (§1 del prompt Radar/Rivali): demanderTeamIds
+// è puramente informativo, non deve cambiare demandMult rispetto a prima della sua aggiunta.
+describe("computeDemand — demanderTeamIds (esposizione, nessun impatto sul calcolo)", () => {
+  function namedTeam(id: string, legalMax: number, openSlotsA = 1): DemandTeam {
+    return { id, openSlots: { P: 0, D: 0, C: 0, A: openSlotsA }, legalMax, roster: [] };
+  }
+
+  it("elenca esattamente gli id delle squadre contate in demanders, stesso ordine/numero", () => {
+    const r = computeDemand({
+      role: "A",
+      fascia: "B",
+      freePlayers: freePlayers(5),
+      teams: [namedTeam("juve", 200), namedTeam("out-of-slots", 200, 0), namedTeam("milan", 200)],
+    });
+    expect(r.demanders).toBe(2);
+    expect(r.demanderTeamIds).toEqual(["juve", "milan"]);
+  });
+
+  it("demanders = 0 → demanderTeamIds vuoto, demandMult resta 0.90 come da formula originale", () => {
+    const r = computeDemand({ role: "A", fascia: "B", freePlayers: freePlayers(5), teams: [] });
+    expect(r.demanderTeamIds).toEqual([]);
+    expect(r.demandMult).toBe(0.9);
+  });
+});

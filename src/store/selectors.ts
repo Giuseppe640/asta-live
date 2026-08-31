@@ -3,6 +3,7 @@ import { computeCapPiano, computeLegalMax, computePersonalMax, isExtremeOverpay,
 import { PROFILE_QUOTAS, ROLE_SLOTS, ROLES, ROSTER_SIZE, STARTING_BUDGET } from "../lib/constants";
 import { computeDemand, type DemandFreePlayer, type DemandTeam } from "../lib/demand";
 import { computeDisplayRange, computeFairLive, computeInflationForBucket } from "../lib/pricing";
+import type { UpdatePack } from "./updatePack";
 import type { AuctionEvent, FantasyTeam, Fascia, Player, Role, TeamProfile } from "../types";
 
 export function bucketKey(role: Role, fascia: Fascia): string {
@@ -75,6 +76,28 @@ export function computeTeamBudget(team: FantasyTeam, players: Player[]): TeamBud
   };
 }
 
+/** Converte squadre+giocatori nel formato che `computeDemand` (lib/demand.ts) si aspetta. Condiviso da ogni chiamante (prezzo live, Rivali, Radar) per non duplicare la logica. */
+export function buildDemandTeams(players: Player[], teams: FantasyTeam[]): DemandTeam[] {
+  const byId = new Map(players.map((p) => [p.id, p]));
+  return teams.map((t) => {
+    const budget = computeTeamBudget(t, players);
+    return {
+      id: t.id,
+      openSlots: {
+        P: ROLE_SLOTS.P - budget.ownedCount.P,
+        D: ROLE_SLOTS.D - budget.ownedCount.D,
+        C: ROLE_SLOTS.C - budget.ownedCount.C,
+        A: ROLE_SLOTS.A - budget.ownedCount.A,
+      },
+      legalMax: budget.legalMax,
+      roster: t.roster
+        .map((r) => byId.get(r.playerId))
+        .filter((p): p is Player => p != null)
+        .map((p) => ({ role: p.role, fasciaSeed: p.fascia })),
+    };
+  });
+}
+
 export interface LivePricing {
   fairSeed: number | null;
   fascia: Fascia;
@@ -112,24 +135,7 @@ export function computeLivePricing(
       baseLive: (p.pricing.fairSeed ?? 0) * inflationLiveFor(buckets, p.role, p.fascia),
     }));
 
-  const byId = new Map(players.map((p) => [p.id, p]));
-  const demandTeams: DemandTeam[] = teams.map((t) => {
-    const budget = computeTeamBudget(t, players);
-    return {
-      id: t.id,
-      openSlots: {
-        P: ROLE_SLOTS.P - budget.ownedCount.P,
-        D: ROLE_SLOTS.D - budget.ownedCount.D,
-        C: ROLE_SLOTS.C - budget.ownedCount.C,
-        A: ROLE_SLOTS.A - budget.ownedCount.A,
-      },
-      legalMax: budget.legalMax,
-      roster: t.roster
-        .map((r) => byId.get(r.playerId))
-        .filter((p): p is Player => p != null)
-        .map((p) => ({ role: p.role, fasciaSeed: p.fascia })),
-    };
-  });
+  const demandTeams = buildDemandTeams(players, teams);
 
   const demand = computeDemand({ role: player.role, fascia: player.fascia, teams: demandTeams, freePlayers });
 
@@ -231,6 +237,76 @@ export function recomputeBandsInPlace(players: Player[]): Player[] {
 
 export function defaultNominalForProfile(profile: TeamProfile) {
   return profile === "custom" ? PROFILE_QUOTAS.balanced_md : PROFILE_QUOTAS[profile];
+}
+
+export type DataHealthLevel = "good" | "medium" | "low";
+
+export interface DataHealthField {
+  label: string;
+  covered: number;
+  total: number;
+  level: DataHealthLevel;
+}
+
+export interface DataHealth {
+  total: number;
+  fields: DataHealthField[];
+  lastUpdate: string | null;
+}
+
+function healthLevel(covered: number, total: number): DataHealthLevel {
+  const ratio = total > 0 ? covered / total : 0;
+  if (ratio >= 0.8) return "good";
+  if (ratio >= 0.3) return "medium";
+  return "low";
+}
+
+/**
+ * §12-13 del prompt Radar/Rivali: copertura *reale* del dataset, non proprietà TypeScript
+ * valorizzate con default. Titolarità/rigori/rischio uscita partono tutti da un default neutro
+ * uguale per tutti i 523 giocatori (vedi scripts/import_listone.py) — l'unico modo per sapere se
+ * un valore è stato davvero verificato è controllare se un pack di aggiornamento lo ha toccato
+ * per quello specifico id, non leggere il valore corrente del giocatore.
+ */
+export function computeDataHealth(players: Player[], updatePacks: UpdatePack[]): DataHealth {
+  const total = players.length;
+
+  const starterTouched = new Set<string>();
+  const penaltiesTouched = new Set<string>();
+  const departureTouched = new Set<string>();
+
+  for (const pack of updatePacks) {
+    for (const patch of pack.patches) {
+      if (!patch.id) continue;
+      if (patch.starter !== undefined || patch.starterPct !== undefined) starterTouched.add(patch.id);
+      if (patch.penalties !== undefined) penaltiesTouched.add(patch.id);
+      if (patch.departureRisk !== undefined) departureTouched.add(patch.id);
+    }
+  }
+
+  const counts = {
+    role: players.filter((p) => p.role != null).length,
+    quota: players.filter((p) => p.sourceSnapshot.quota != null).length,
+    fvm: players.filter((p) => p.sourceSnapshot.fvm1000 != null).length,
+    market: players.filter((p) => p.sourceSnapshot.market10x500 != null).length,
+    starter: players.filter((p) => starterTouched.has(p.id)).length,
+    penalties: players.filter((p) => penaltiesTouched.has(p.id)).length,
+    departure: players.filter((p) => departureTouched.has(p.id)).length,
+  };
+
+  const fields: DataHealthField[] = [
+    { label: "Ruolo", covered: counts.role, total, level: healthLevel(counts.role, total) },
+    { label: "Quota", covered: counts.quota, total, level: healthLevel(counts.quota, total) },
+    { label: "FVM", covered: counts.fvm, total, level: healthLevel(counts.fvm, total) },
+    { label: "Mercato reale", covered: counts.market, total, level: healthLevel(counts.market, total) },
+    { label: "Titolarità", covered: counts.starter, total, level: healthLevel(counts.starter, total) },
+    { label: "Rigori", covered: counts.penalties, total, level: healthLevel(counts.penalties, total) },
+    { label: "Rischio uscita", covered: counts.departure, total, level: healthLevel(counts.departure, total) },
+  ];
+
+  const lastUpdate = updatePacks.length > 0 ? updatePacks[updatePacks.length - 1].date : null;
+
+  return { total, fields, lastUpdate };
 }
 
 export { ROSTER_SIZE };

@@ -7,7 +7,7 @@ const ROLE_COLORS: Record<Role, string> = {
   A: "bg-rose-500/20 text-rose-300 border-rose-500/40",
 };
 
-const ROLE_NAMES: Record<Role, string> = {
+export const ROLE_NAMES: Record<Role, string> = {
   P: "Portiere",
   D: "Difensore",
   C: "Centrocampista",
@@ -33,7 +33,7 @@ const FASCIA_COLORS: Record<Fascia, string> = {
   D: "bg-neutral-600/20 text-neutral-400 border-neutral-600/40",
 };
 
-const FASCIA_NAMES: Record<Fascia, string> = {
+export const FASCIA_NAMES: Record<Fascia, string> = {
   S: "Livello: top player",
   A: "Livello: molto forte",
   B: "Livello: buono",

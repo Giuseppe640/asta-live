@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { ChevronDown, Gavel, Minus, Plus, TriangleAlert } from "lucide-react";
 import { ConfidenceDot, DemandLabelBadge, FasciaBadge, RoleBadge } from "../../components/Badges";
 import type { LivePricing } from "../../store/selectors";
+import type { LeavePlayerContext } from "./leaveContext";
 import type { Player } from "../../types";
 
 type PriceColor = "verde" | "giallo" | "rosso";
@@ -46,10 +47,12 @@ function buildReasons(player: Player, live: LivePricing): string[] {
 export function OverlayCard({
   player,
   live,
+  leaveContext,
   onAssign,
 }: {
   player: Player;
   live: LivePricing;
+  leaveContext?: LeavePlayerContext | null;
   onAssign: (price: number) => void;
 }) {
   const [currentPrice, setCurrentPrice] = useState(() => Math.max(1, Math.round((live.fairLive ?? live.personalMax) * 0.6)));
@@ -107,6 +110,23 @@ export function OverlayCard({
           <TriangleAlert className="h-3.5 w-3.5 shrink-0" />
           attenzione: con questo budget rischi di non riuscire a completare la rosa
         </p>
+      )}
+
+      {leaveContext && (
+        <div className="relative mt-2.5 rounded-lg border border-white/5 bg-white/[0.03] px-2.5 py-2">
+          <p className="text-[11px] font-bold uppercase tracking-wide text-neutral-400">Se lo lasci</p>
+          <p className={`mt-0.5 flex items-start gap-1 text-xs ${leaveContext.scarcity === "high" ? "text-rose-400" : "text-neutral-400"}`}>
+            {leaveContext.scarcity === "high" && <TriangleAlert className="mt-0.5 h-3 w-3 shrink-0" />}
+            {leaveContext.message}
+          </p>
+          {leaveContext.comparablePlayers.length > 0 && (
+            <p className="mt-1 truncate text-[11px] text-neutral-500">
+              {leaveContext.comparablePlayers
+                .map((c) => `${c.name} ${c.fairLive != null ? Math.round(c.fairLive) : "—"}`)
+                .join(" · ")}
+            </p>
+          )}
+        </div>
       )}
 
       <div className="relative mt-4">

@@ -7,6 +7,7 @@ import { RoleBadge, FasciaBadge } from "../../components/Badges";
 import { OverlayCard } from "./OverlayCard";
 import { TeamPickerModal } from "./TeamPickerModal";
 import { RecentPicksFeed } from "./RecentPicksFeed";
+import { getLeavePlayerContext } from "./leaveContext";
 import type { Role } from "../../types";
 
 function vibrate(pattern: number | number[]) {
@@ -22,6 +23,8 @@ export function BattitoreView() {
   const events = useAuctionStore((s) => s.events);
   const assign = useAuctionStore((s) => s.assign);
   const undo = useAuctionStore((s) => s.undo);
+  const pendingPlayerSelection = useAuctionStore((s) => s.pendingPlayerSelection);
+  const clearPendingPlayerSelection = useAuctionStore((s) => s.clearPendingPlayerSelection);
   const isDesktop = useIsDesktop();
 
   const [query, setQuery] = useState("");
@@ -46,6 +49,18 @@ export function BattitoreView() {
     return computeLivePricing(players, teams, selectedPlayer.id, myTeamId);
     // ricalcola quando cambia il log eventi (assegnazioni influenzano inflazione/domanda/legal_max)
   }, [selectedPlayer, players, teams, myTeamId, events.length]);
+  const leaveContext = useMemo(() => {
+    if (!selectedPlayer || !myTeamId) return null;
+    return getLeavePlayerContext(selectedPlayer.id, players, teams, myTeamId);
+  }, [selectedPlayer, players, teams, myTeamId, events.length]);
+
+  // Radar/Rivali chiedono di aprire un giocatore qui: si consuma una volta sola.
+  useEffect(() => {
+    if (pendingPlayerSelection) {
+      setSelectedId(pendingPlayerSelection);
+      clearPendingPlayerSelection();
+    }
+  }, [pendingPlayerSelection, clearPendingPlayerSelection]);
 
   // Esc: chiude il modale se aperto, altrimenti deseleziona, altrimenti svuota la ricerca.
   useEffect(() => {
@@ -176,7 +191,7 @@ export function BattitoreView() {
         <div className="flex h-full flex-1 flex-col gap-4 overflow-y-auto p-4">
           {selectedPlayer && live ? (
             <div className="max-w-2xl">
-              <OverlayCard player={selectedPlayer} live={live} onAssign={handleAssignRequest} />
+              <OverlayCard player={selectedPlayer} live={live} leaveContext={leaveContext} onAssign={handleAssignRequest} />
             </div>
           ) : (
             <div className="flex max-w-2xl flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-white/10 py-16 text-center text-sm text-neutral-500">
@@ -205,7 +220,7 @@ export function BattitoreView() {
             <ChevronLeft className="h-4 w-4" />
             torna alla ricerca
           </button>
-          <OverlayCard player={selectedPlayer} live={live} onAssign={handleAssignRequest} />
+          <OverlayCard player={selectedPlayer} live={live} leaveContext={leaveContext} onAssign={handleAssignRequest} />
         </div>
       ) : (
         resultsList

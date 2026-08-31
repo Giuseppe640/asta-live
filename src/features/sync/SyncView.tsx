@@ -1,11 +1,18 @@
 import { useRef, useState } from "react";
-import { Database, Download, Newspaper, RotateCcw, TriangleAlert, Upload, Wifi, WifiOff } from "lucide-react";
+import { ClipboardCheck, Database, Download, Newspaper, RotateCcw, TriangleAlert, Upload, Wifi, WifiOff } from "lucide-react";
 import { useAuctionStore } from "../../store/useAuctionStore";
 import { isSyncConfigured, suggestRoomCode } from "../../store/firebaseSync";
+import { computeDataHealth, type DataHealthLevel } from "../../store/selectors";
 import teamsSeed from "../../data/teams.json";
 import { getMergedRawPlayers } from "../../store/mergedSeed";
 import { loadAllUpdatePacks } from "../../store/updatePack";
 import type { FantasyTeam } from "../../types";
+
+const HEALTH_DOT: Record<DataHealthLevel, string> = {
+  good: "bg-emerald-400",
+  medium: "bg-amber-400",
+  low: "bg-rose-400",
+};
 
 const SYNC_STATUS_LABEL: Record<string, string> = {
   disconnected: "Non connesso",
@@ -65,6 +72,7 @@ export function SyncView() {
 
   const assignedCount = players.filter((p) => p.assignedTo != null).length;
   const updatePacks = loadAllUpdatePacks();
+  const dataHealth = computeDataHealth(players, updatePacks);
 
   function handleExport() {
     const json = exportState();
@@ -191,6 +199,29 @@ export function SyncView() {
         >
           Applica aggiornamenti scouting
         </button>
+      </Card>
+
+      <Card>
+        <CardTitle icon={ClipboardCheck}>Qualità dati</CardTitle>
+        <p className="mt-1 text-xs text-neutral-500">
+          Copertura reale su {dataHealth.total} giocatori — un valore neutro non ancora verificato da una notizia non conta come dato coperto.
+        </p>
+        <ul className="mt-2.5 flex flex-col gap-1.5">
+          {dataHealth.fields.map((f) => (
+            <li key={f.label} className="flex items-center justify-between text-xs">
+              <span className="flex items-center gap-1.5 text-neutral-400">
+                <span className={`h-2 w-2 shrink-0 rounded-full ${HEALTH_DOT[f.level]}`} />
+                {f.label}
+              </span>
+              <span className="font-display font-semibold tabular-nums text-neutral-200">
+                {f.covered} / {f.total}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-2.5 text-[11px] text-neutral-600">
+          Ultimo aggiornamento: {dataHealth.lastUpdate ?? "nessuno applicato ancora"}
+        </p>
       </Card>
 
       <Card>
