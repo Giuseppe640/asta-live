@@ -1,0 +1,57 @@
+{
+  "date": "2026-08-31",
+  "source": "Ricerca web: fantacalcio.it, sosfanta.com, ilsussidiario.net, corrieredellosport.it (infortunio Zaniolo/Palma esito esami, 25-26/08); sport.sky.it, forzaroma.info, allroma.it, romasport.eu (De Roon-Roma ufficiale, 30-31/08); pianetamilan.it, calciomercato.it, sportal.it (Gimenez-Porto, 30/08); tuttoudinese.it, calcionapoli1926.it (Solet-Crystal Palace, 31/08); fantacalcio.it, areanapoli.it, sportnapoli.news (rigoristi Napoli De Bruyne/Hojlund); sport.sky.it, tuttosport.com, juventusnews24.com (Yildiz operazione, 28/08)",
+  "patches": [
+    {
+      "id": "22",
+      "name": "De Roon",
+      "newTeam": "Roma",
+      "rumor": "Trasferimento UFFICIALE dall'Atalanta alla Roma a titolo definitivo (comunicati di entrambi i club, 30/08): ritrova Gasperini, già convocato per la trasferta di Lecce"
+    },
+    {
+      "id": "2766",
+      "name": "Zaniolo",
+      "starter": "out",
+      "starterPct": 10,
+      "rumor": "Comunicato ufficiale Udinese: lesione muscolare al bicipite femorale della coscia destra, prognosi 3-4 settimane"
+    },
+    {
+      "id": "6925",
+      "name": "Palma",
+      "starter": "out",
+      "starterPct": 10,
+      "rumor": "Comunicato ufficiale Udinese: lesione al muscolo adduttore lungo della coscia destra, prognosi 3-4 settimane"
+    },
+    {
+      "id": "6434",
+      "name": "Yildiz",
+      "starter": "out",
+      "starterPct": 5,
+      "rumor": "Frattura al quinto metatarso del piede sinistro, operato: tempi di recupero stimati 2 mesi e mezzo-3 mesi, obiettivo rientro alla sosta di novembre"
+    },
+    {
+      "id": "7008",
+      "name": "Gimenez",
+      "departureRisk": 80,
+      "rumor": "Accordo totale Milan-Porto raggiunto (prestito con opzione a 18M): il giocatore è già in Portogallo per visite mediche e firma"
+    },
+    {
+      "id": "6956",
+      "name": "Solet",
+      "departureRisk": 55,
+      "rumor": "Interesse Napoli sfumato: ora il Crystal Palace tratta con l'Udinese (offerta 25M contro richiesta di 30M) negli ultimi giorni di mercato"
+    },
+    {
+      "id": "2517",
+      "name": "De Bruyne",
+      "penalties": 1,
+      "rumor": "Rigorista designato del Napoli quando in campo (3/3 in stagione), nessun dubbio sulla gerarchia"
+    },
+    {
+      "id": "6052",
+      "name": "Hojlund",
+      "penalties": 2,
+      "rumor": "Seconda scelta sui rigori del Napoli dietro De Bruyne (1/2 in stagione), ma affidabilità dal dischetto in dubbio: Lucca alternativa in caso di sua assenza"
+    }
+  ]
+}
