@@ -14,6 +14,10 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
+      // Registrazione manuale in src/registerSW.ts: lo script auto-iniettato di default si limita
+      // a registrare il service worker, senza ricaricare la pagina quando ne arriva uno nuovo — un
+      // deploy poteva restare invisibile finché l'utente non ricaricava due volte di sua iniziativa.
+      injectRegister: null,
       includeAssets: ['favicon.svg'],
       manifest: {
         name: 'AstaLive - Asta Fantacalcio 2026/27',
