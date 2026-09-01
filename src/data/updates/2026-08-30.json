@@ -22,7 +22,7 @@
       "name": "Kristensen T.",
       "starter": "ballottaggio",
       "starterPct": 40,
-      "rumor": "Problema alla caviglia, tempi di recupero non precisati; Udinese valuta anche una sua cessione"
+      "rumor": "Trasferito ufficialmente dall'Udinese all'Atalanta il 13/08/2026"
     },
     {
       "id": "5918",
@@ -68,8 +68,8 @@
     {
       "id": "1933",
       "name": "Mandragora",
-      "departureRisk": 35,
-      "rumor": "Vicino al ritorno al Torino, davanti alla concorrenza del Genoa (che dovrebbe prima cedere Frendrup)"
+      "departureRisk": 80,
+      "rumor": "Trasferimento al Torino confermato (~7-8M, triennale), visite mediche in giornata: il Genoa è fuori dai giochi (non ha ceduto Frendrup in tempo)"
     },
     {
       "id": "4911",

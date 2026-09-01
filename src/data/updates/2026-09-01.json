@@ -35,16 +35,16 @@
       "name": "Tomori",
       "starter": "out",
       "starterPct": 5,
-      "departureRisk": 35,
-      "rumor": "Trattativa con l'Aston Villa saltata nelle ultime 48 ore; insieme a Fofana e Gimenez è escluso dal progetto tecnico Milan, allenamenti separati e fuori dalla lista Serie A salvo offerta last-minute entro le 20:00"
+      "departureRisk": 50,
+      "rumor": "Offerta del Fulham (10-15M) sul tavolo, al vaglio del giocatore: non ancora ufficiale, tempo stretto prima delle 20:00. Resta escluso dal progetto tecnico Milan insieme a Fofana e Gimenez"
     },
     {
       "id": "4686",
       "name": "Fofana Y.",
       "starter": "out",
       "starterPct": 5,
-      "departureRisk": 55,
-      "rumor": "Trattativa avanzata col Galatasaray (opzione preferita dal giocatore), pista Lione alternativa; escluso dal progetto tecnico Milan come Tomori e Gimenez"
+      "departureRisk": 60,
+      "rumor": "Cambia la destinazione: ora il Lione è in vantaggio sul Galatasaray, scambio di documenti in corso. Resta escluso dal progetto tecnico Milan insieme a Tomori e Gimenez"
     },
     {
       "id": "7008",
@@ -62,14 +62,14 @@
     {
       "id": "6039",
       "name": "Cabal",
-      "departureRisk": 50,
-      "rumor": "Contatti vivi Juventus-Atalanta, proposta ufficiale attesa (prestito con diritto di riscatto): la sua cessione sbloccherebbe l'arrivo di Tagliafico a Torino"
+      "departureRisk": 70,
+      "rumor": "Intesa totale raggiunta tra Juventus e Atalanta (prestito con obbligo di riscatto): manca solo il sì del giocatore. Sblocca l'arrivo di Tagliafico dal Lione, conteso anche dall'Atletico Madrid"
     },
     {
       "id": "6814",
       "name": "Norton-Cuffy",
-      "departureRisk": 70,
-      "rumor": "Trattativa in stato avanzato col Venezia (14M + prestito/cessione di Sagrado al Genoa): manca solo l'ok definitivo del giocatore"
+      "departureRisk": 85,
+      "rumor": "Salta la cessione al Venezia (nessun accordo sull'ingaggio): il Genoa lo cede invece all'Hull City (Championship inglese, 14M)"
     },
     {
       "id": "7418",
