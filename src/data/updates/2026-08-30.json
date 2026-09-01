@@ -14,7 +14,8 @@
       "name": "Hien",
       "starter": "out",
       "starterPct": 5,
-      "rumor": "Operato per lesione muscolare, rientro previsto inizio ottobre 2026: salta l'avvio di stagione"
+      "rumor": "Operato per lesione muscolare, rientro previsto inizio ottobre 2026: salta l'avvio di stagione",
+      "returnEstimate": "inizio ottobre"
     },
     {
       "id": "6485",
@@ -28,7 +29,8 @@
       "name": "Sulemana K.",
       "starter": "out",
       "starterPct": 5,
-      "rumor": "Lesione al collaterale del ginocchio, rientro previsto metà ottobre 2026: salta l'avvio di stagione"
+      "rumor": "Lesione al collaterale del ginocchio, rientro previsto metà ottobre 2026: salta l'avvio di stagione",
+      "returnEstimate": "metà ottobre"
     },
     {
       "id": "2766",

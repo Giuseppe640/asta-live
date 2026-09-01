@@ -21,7 +21,8 @@
       "name": "Palma",
       "starter": "out",
       "starterPct": 10,
-      "rumor": "Comunicato ufficiale Udinese: lesione al muscolo adduttore lungo della coscia destra, prognosi 3-4 settimane"
+      "rumor": "Comunicato ufficiale Udinese: lesione al muscolo adduttore lungo della coscia destra, prognosi 3-4 settimane",
+      "returnEstimate": "3-4 settimane"
     },
     {
       "id": "6434",
