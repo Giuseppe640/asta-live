@@ -43,12 +43,15 @@ export function TeamPickerModal({
               key={t.id}
               type="button"
               onClick={() => onPick(t.id)}
-              className="flex h-14 items-center gap-2 rounded-xl bg-white/5 px-3 text-left transition-colors active:bg-white/10"
+              className="flex h-16 items-center gap-2 rounded-xl bg-white/5 px-3 text-left transition-colors active:bg-white/10"
             >
               <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: t.color }} />
-              <span className="truncate text-sm font-medium text-neutral-100">
-                {t.name}
-                {t.id === myTeamId ? " (tu)" : ""}
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-sm font-medium text-neutral-100">
+                  {t.name}
+                  {t.id === myTeamId ? " (tu)" : ""}
+                </span>
+                {t.president && <span className="block truncate text-[11px] text-neutral-500">{t.president}</span>}
               </span>
             </button>
           ))}
