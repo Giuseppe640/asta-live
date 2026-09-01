@@ -214,13 +214,13 @@
     },
     {
       "id": "6662",
-      "starter": "ballottaggio",
-      "starterPct": 55
+      "starter": "fisso",
+      "starterPct": 72
     },
     {
       "id": "7411",
-      "starter": "ballottaggio",
-      "starterPct": 45
+      "starter": "riserva",
+      "starterPct": 25
     },
     {
       "id": "7048",
@@ -259,8 +259,8 @@
     },
     {
       "id": "7457",
-      "starter": "riserva",
-      "starterPct": 15
+      "starter": "ballottaggio",
+      "starterPct": 45
     },
     {
       "id": "5320",
@@ -269,8 +269,8 @@
     },
     {
       "id": "6534",
-      "starter": "fisso",
-      "starterPct": 85
+      "starter": "ballottaggio",
+      "starterPct": 55
     },
     {
       "id": "7363",
