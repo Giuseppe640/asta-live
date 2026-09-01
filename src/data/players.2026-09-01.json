@@ -338,6 +338,32 @@
     "isNew": false
   },
   {
+    "id": "6752",
+    "name": "Woltemade",
+    "role": "A",
+    "roleSource": "league_list_export",
+    "roleLocked": true,
+    "team": "Juventus",
+    "sourceSnapshot": {
+      "source": "fantacalcio.it-listone-2026-09-01",
+      "observedAt": "2026-09-01T00:00:00.000Z",
+      "fvm1000": 160,
+      "quota": 23,
+      "sampleQuality": "low",
+      "pricedIn": {
+        "starter": false,
+        "penalties": false,
+        "departure": false
+      }
+    },
+    "starter": "ballottaggio",
+    "starterPct": 50,
+    "penalties": 0,
+    "freeKicks": 0,
+    "corners": 0,
+    "isNew": true
+  },
+  {
     "id": "2423",
     "name": "Pulisic",
     "role": "C",
@@ -2163,7 +2189,7 @@
     "role": "C",
     "roleSource": "league_list_export",
     "roleLocked": true,
-    "team": "Bologna",
+    "team": "Atalanta",
     "sourceSnapshot": {
       "source": "fantacalcio.it-listone-2026-09-01",
       "observedAt": "2026-09-01T00:00:00.000Z",
@@ -9464,6 +9490,32 @@
     "isNew": false
   },
   {
+    "id": "5742",
+    "name": "Drameh",
+    "role": "D",
+    "roleSource": "league_list_export",
+    "roleLocked": true,
+    "team": "Genoa",
+    "sourceSnapshot": {
+      "source": "fantacalcio.it-listone-2026-09-01",
+      "observedAt": "2026-09-01T00:00:00.000Z",
+      "fvm1000": 10,
+      "quota": 3,
+      "sampleQuality": "low",
+      "pricedIn": {
+        "starter": false,
+        "penalties": false,
+        "departure": false
+      }
+    },
+    "starter": "ballottaggio",
+    "starterPct": 50,
+    "penalties": 0,
+    "freeKicks": 0,
+    "corners": 0,
+    "isNew": true
+  },
+  {
     "id": "5695",
     "name": "Haps",
     "role": "D",
@@ -10957,32 +11009,6 @@
       "observedAt": "2026-09-01T00:00:00.000Z",
       "fvm1000": 5,
       "quota": 4,
-      "sampleQuality": "low",
-      "pricedIn": {
-        "starter": false,
-        "penalties": false,
-        "departure": false
-      }
-    },
-    "starter": "ballottaggio",
-    "starterPct": 50,
-    "penalties": 0,
-    "freeKicks": 0,
-    "corners": 0,
-    "isNew": true
-  },
-  {
-    "id": "7128",
-    "name": "Kuhn",
-    "role": "A",
-    "roleSource": "league_list_export",
-    "roleLocked": true,
-    "team": "Como",
-    "sourceSnapshot": {
-      "source": "fantacalcio.it-listone-2026-09-01",
-      "observedAt": "2026-09-01T00:00:00.000Z",
-      "fvm1000": 5,
-      "quota": 3,
       "sampleQuality": "low",
       "pricedIn": {
         "starter": false,

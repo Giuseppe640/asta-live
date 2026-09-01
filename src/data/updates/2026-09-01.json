@@ -1,6 +1,6 @@
 {
   "date": "2026-09-01",
-  "source": "Ricerca web (deadline day mercato estivo, chiusura ore 20:00): fanpage.it, sportitalia.it, sky.it, goal.com (live calciomercato 1/09); sportmediaset.mediaset.it, footmercato.net, lazionews24.com, lazialita.com, napolimagazine.com, thelaziali.com (Dia-Rennes); corrieredellosport.it, tuttomercatoweb.com, sosfanta.com, iamnaples.it, calcionapoli24.it, calcionapoli1926.it (infortuni Napoli: Buongiorno, Marianucci, Neres); pianetamilan.it, ilmilanista.it, sportmediaset.mediaset.it, sportal.it, milannews24.com, milannews.it, milanpress.it (Tomori/Fofana/Gimenez esclusi dal progetto Milan); tuttoatalanta.com, gianlucadimarzio.com, tuttojuve.com, calcioatalanta.it, ilmessaggero.it, fantamaster.it (Rowe/Cabal/Tagliafico domino Atalanta-Juventus-Bologna); linterista.it, fcinter1908.it, sport.sky.it, buoncalcioatutti.it, cronachedi.it, trivenetogoal.it, football-italia.net, areanapoli.it (Norton-Cuffy al Venezia); ansa.it, fantacalcio.it, telefriuli.it, fantamaster.it (infortuni Chakvetadze/Zanoli Udinese)",
+  "source": "Ricerca web (deadline day mercato estivo, chiusura ore 20:00): fanpage.it, sportitalia.it, sky.it, goal.com (live calciomercato 1/09); sportmediaset.mediaset.it, footmercato.net, lazionews24.com, lazialita.com, napolimagazine.com, thelaziali.com (Dia-Rennes); corrieredellosport.it, tuttomercatoweb.com, sosfanta.com, iamnaples.it, calcionapoli24.it, calcionapoli1926.it (infortuni Napoli: Buongiorno, Marianucci, Neres); pianetamilan.it, ilmilanista.it, sportmediaset.mediaset.it, sportal.it, milannews24.com, milannews.it, milanpress.it (Tomori/Fofana/Gimenez esclusi dal progetto Milan); tuttoatalanta.com, gianlucadimarzio.com, tuttojuve.com, calcioatalanta.it, ilmessaggero.it, fantamaster.it (Rowe/Cabal/Tagliafico domino Atalanta-Juventus-Bologna); linterista.it, fcinter1908.it, sport.sky.it, buoncalcioatutti.it, cronachedi.it, trivenetogoal.it, football-italia.net, areanapoli.it (Norton-Cuffy al Venezia); ansa.it, fantacalcio.it, telefriuli.it, fantamaster.it (infortuni Chakvetadze/Zanoli Udinese). AGGIORNAMENTO ore ~19:45 (post-riepilogo esiti deadline day): fanpage.it, calcionews24.com (live calciomercato); sportmediaset.mediaset.it, milannews24.com, cronachedi.it (Tomori/Fofana Milan, ancora non ufficiali); juventusnews24.com, tuttosport.com, calcioatalanta.it, linterista.it, spazioj.it (fumata nera Cabal-Atalanta, Tagliafico verso Atletico Madrid); sportmediaset.mediaset.it, calciomercato.it, calciogenoa.it, genoaoggi.it, sosfanta.com, bottadiculo.it (Norton-Cuffy ufficiale all'Hull City, non al Venezia); firenzetoday.it, romatoday.it, lazialita.com, since1900.it (Gudmundsson ufficiale alla Lazio); toronews.net, toro.it, gianlucadimarzio.com, fiorentinanews.com, tuttomercatoweb.com (Mandragora ufficiale al Torino)",
   "patches": [
     {
       "id": "5672",
@@ -56,20 +56,33 @@
     {
       "id": "6844",
       "name": "Rowe",
-      "departureRisk": 75,
-      "rumor": "Via libera per l'Atalanta: prestito oneroso da 5M con obbligo di riscatto a 30M+5, atteso a Bergamo il 1/09 per visite mediche e firma"
+      "newTeam": "Atalanta",
+      "departureRisk": 100,
+      "rumor": "Trasferimento UFFICIALE dal Bologna all'Atalanta (prestito oneroso da 5M con obbligo di riscatto a 30M+5, per un totale potenziale di 40M)"
     },
     {
       "id": "6039",
       "name": "Cabal",
-      "departureRisk": 70,
-      "rumor": "Intesa totale raggiunta tra Juventus e Atalanta (prestito con obbligo di riscatto): manca solo il sì del giocatore. Sblocca l'arrivo di Tagliafico dal Lione, conteso anche dall'Atletico Madrid"
+      "departureRisk": 10,
+      "rumor": "Fumata nera: la trattativa con l'Atalanta si è arenata per l'indecisione del giocatore, resta alla Juventus. Salta di conseguenza anche l'arrivo di Tagliafico (ora seguito dall'Atletico Madrid)"
     },
     {
       "id": "6814",
       "name": "Norton-Cuffy",
-      "departureRisk": 85,
-      "rumor": "Salta la cessione al Venezia (nessun accordo sull'ingaggio): il Genoa lo cede invece all'Hull City (Championship inglese, 14M)"
+      "departureRisk": 100,
+      "rumor": "Trasferimento UFFICIALE dal Genoa all'Hull City (Championship inglese, 14,5M): saltato in mattinata l'accordo sull'ingaggio col Venezia. In arrivo al suo posto Cody Drameh, in senso inverso dall'Hull City (4,5M)"
+    },
+    {
+      "id": "5800",
+      "name": "Gudmundsson A.",
+      "newTeam": "Lazio",
+      "rumor": "Trasferimento UFFICIALE dalla Fiorentina alla Lazio (prestito oneroso 1M con diritto di riscatto a 12M): prenderà il posto di Cancellieri come ala destra nel 4-3-3 di Gattuso"
+    },
+    {
+      "id": "1933",
+      "name": "Mandragora",
+      "newTeam": "Torino",
+      "rumor": "Trasferimento UFFICIALE dalla Fiorentina al Torino a titolo definitivo (7-8M, contratto quadriennale): ritorna in granata dopo l'esperienza 2020-2022"
     },
     {
       "id": "7418",
