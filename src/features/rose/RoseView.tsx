@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ChevronDown, Sparkles, TriangleAlert } from "lucide-react";
+import { ChevronDown, Sparkles, TriangleAlert, X } from "lucide-react";
 import { useAuctionStore } from "../../store/useAuctionStore";
 import { computeTeamBudget } from "../../store/selectors";
 import { ROLES } from "../../lib/constants";
@@ -18,6 +18,7 @@ export function RoseView() {
   const teams = useAuctionStore((s) => s.teams);
   const myTeamId = useAuctionStore((s) => s.myTeamId);
   const setTeamProfile = useAuctionStore((s) => s.setTeamProfile);
+  const unassignPlayer = useAuctionStore((s) => s.unassignPlayer);
 
   const [expanded, setExpanded] = useState<string | null>(myTeamId);
   const playerById = useMemo(() => new Map(players.map((p) => [p.id, p])), [players]);
@@ -129,6 +130,18 @@ export function RoseView() {
                         <RoleBadge role={player!.role} />
                         <span className="flex-1 truncate text-neutral-200">{player!.name}</span>
                         <span className="font-display tabular-nums text-neutral-400">{entry.price}</span>
+                        <button
+                          type="button"
+                          title={`Togli ${player!.name} da ${team.name}: torna libero per l'asta`}
+                          onClick={() => {
+                            if (window.confirm(`Togliere ${player!.name} da ${team.name}? Torna libero per l'asta.`)) {
+                              unassignPlayer(entry.playerId);
+                            }
+                          }}
+                          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-neutral-600 transition-colors hover:bg-rose-500/10 hover:text-rose-400"
+                        >
+                          <X className="h-3.5 w-3.5" />
+                        </button>
                       </li>
                     ))}
                   {team.roster.length === 0 && <li className="py-3 text-center text-xs text-neutral-600">Nessun giocatore ancora</li>}

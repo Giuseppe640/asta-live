@@ -40,6 +40,7 @@ interface AuctionStore {
   refreshPack: (rawPlayers: RawPlayer[]) => { updated: number };
   assign: (playerId: string, teamId: string, price: number, by?: string) => AssignResult;
   undo: () => void;
+  unassignPlayer: (playerId: string) => AssignResult;
   setWatch: (playerId: string, watch: Watch | undefined) => void;
   setFasciaOverride: (playerId: string, fascia: Fascia | undefined) => void;
   setTeamProfile: (teamId: string, profile: TeamProfile) => void;
@@ -72,6 +73,40 @@ function findActiveAssignEvent(events: AuctionEvent[], player: Player): AuctionE
 function withoutPlayerFromRoster(team: FantasyTeam, playerId: string): FantasyTeam {
   const roster = team.roster.filter((r) => r.playerId !== playerId);
   return { ...team, roster, spent: roster.reduce((s, r) => s + r.price, 0) };
+}
+
+/**
+ * Costruisce l'evento "unassign" e il nuovo players/teams per un giocatore già assegnato —
+ * condiviso da undo() (ultima assegnazione in ordine di tempo) e unassignPlayer() (un
+ * giocatore specifico scelto dall'utente, es. la x sulla card in Rose).
+ */
+function buildUnassign(
+  state: { deviceId: string; logicalClock: number; players: Player[]; teams: FantasyTeam[] },
+  player: Player,
+  sourceEvent: AuctionEvent | undefined,
+): { event: AuctionEvent; players: Player[]; teams: FantasyTeam[] } {
+  const playerId = player.id;
+  const teamId = player.assignedTo!;
+  const price = player.price ?? 0;
+
+  const event: AuctionEvent = {
+    id: crypto.randomUUID(),
+    deviceId: state.deviceId,
+    logicalClock: state.logicalClock + 1,
+    createdAt: Date.now(),
+    type: "unassign",
+    playerId,
+    teamId,
+    price,
+    by: "battitore",
+    supersedesEventId: sourceEvent?.id,
+  };
+
+  return {
+    event,
+    players: state.players.map((p) => (p.id === playerId ? { ...p, assignedTo: undefined, price: undefined } : p)),
+    teams: state.teams.map((t) => (t.id === teamId ? withoutPlayerFromRoster(t, playerId) : t)),
+  };
 }
 
 type PersistedAuctionState = Pick<
@@ -276,31 +311,30 @@ export const useAuctionStore = create<AuctionStore>()(
         if (!target) return;
 
         const { player, event: sourceEvent } = target;
-        const playerId = player.id;
-        const teamId = player.assignedTo!;
-        const price = player.price ?? 0;
+        const { event, players, teams } = buildUnassign(state, player, sourceEvent);
 
-        const event: AuctionEvent = {
-          id: crypto.randomUUID(),
-          deviceId: state.deviceId,
-          logicalClock: state.logicalClock + 1,
-          createdAt: Date.now(),
-          type: "unassign",
-          playerId,
-          teamId,
-          price,
-          by: "battitore",
-          supersedesEventId: sourceEvent.id,
-        };
-
-        set({
-          events: [...state.events, event],
-          logicalClock: state.logicalClock + 1,
-          players: state.players.map((p) => (p.id === playerId ? { ...p, assignedTo: undefined, price: undefined } : p)),
-          teams: state.teams.map((t) => (t.id === teamId ? withoutPlayerFromRoster(t, playerId) : t)),
-        });
+        set({ events: [...state.events, event], logicalClock: state.logicalClock + 1, players, teams });
 
         if (state.roomCode) pushEventToRoom(state.roomCode, event);
+      },
+
+      // Rimuove UN giocatore specifico dalla sua squadra (es. la x su una card in Rose), a
+      // differenza di undo() che annulla sempre e solo l'ultima assegnazione in ordine di tempo.
+      // Stesso evento "unassign" append-only: persiste su IndexedDB e si propaga via sync come
+      // qualsiasi altra modifica, non è una rimozione solo visiva.
+      unassignPlayer: (playerId) => {
+        const state = get();
+        const player = state.players.find((p) => p.id === playerId);
+        if (!player) return { ok: false, reason: "Giocatore non trovato" };
+        if (player.assignedTo == null) return { ok: false, reason: "Giocatore non assegnato" };
+
+        const sourceEvent = findActiveAssignEvent(state.events, player);
+        const { event, players, teams } = buildUnassign(state, player, sourceEvent);
+
+        set({ events: [...state.events, event], logicalClock: state.logicalClock + 1, players, teams });
+
+        if (state.roomCode) pushEventToRoom(state.roomCode, event);
+        return { ok: true };
       },
 
       setWatch: (playerId, watch) => {
