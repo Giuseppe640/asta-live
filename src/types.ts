@@ -60,6 +60,8 @@ export interface Player {
   isNew: boolean;
   departureRisk?: number;
   rumor?: string;
+  /** Solo per infortuni/assenze brevi con un rientro stimato concreto (es. "3-4 settimane") — mai per assenze lunghe o incerte. */
+  returnEstimate?: string;
   watch?: Watch;
   assignedTo?: string;
   price?: number;

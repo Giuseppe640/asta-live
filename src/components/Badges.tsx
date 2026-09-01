@@ -69,7 +69,17 @@ const STARTER_LABELS: Record<Starter, string> = {
   out: "Indisponibile",
 };
 
-export function StarterBadge({ starter, starterPct }: { starter: Starter; starterPct: number }) {
+export function StarterBadge({ starter, starterPct, returnEstimate }: { starter: Starter; starterPct: number; returnEstimate?: string }) {
+  if (starter === "out" && returnEstimate) {
+    return (
+      <span
+        title={`Indisponibile ora, ma non a lungo — rientro stimato: ${returnEstimate}`}
+        className="inline-flex h-6 max-w-24 items-center justify-center truncate rounded-lg border border-sky-500/40 bg-sky-500/20 px-1.5 text-[10px] font-bold text-sky-300"
+      >
+        {returnEstimate}
+      </span>
+    );
+  }
   return (
     <span
       title={`${STARTER_LABELS[starter]} — probabilità di giocare titolare: ${starterPct}%`}

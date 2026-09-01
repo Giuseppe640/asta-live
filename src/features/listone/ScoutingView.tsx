@@ -151,7 +151,7 @@ export function ScoutingView() {
                           <div className="flex items-center gap-2">
                             <RoleBadge role={p.role} />
                             <FasciaBadge fascia={p.fascia} uncertain={p.fasciaUncertain} />
-                            <StarterBadge starter={p.starter} starterPct={p.starterPct} />
+                            <StarterBadge starter={p.starter} starterPct={p.starterPct} returnEstimate={p.returnEstimate} />
                             <div className="min-w-0 flex-1">
                               <p className="truncate text-sm font-medium text-neutral-100">{p.name}</p>
                               <p className="truncate text-xs text-neutral-500">{p.team}</p>

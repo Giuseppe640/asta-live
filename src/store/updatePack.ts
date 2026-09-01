@@ -18,6 +18,7 @@ export interface PlayerUpdatePatch {
   corners?: 0 | 1 | 2;
   departureRisk?: number;
   rumor?: string;
+  returnEstimate?: string;
   isNew?: boolean;
   pricedIn?: Partial<PricedIn>;
   /** Solo per il changelog: non viene applicato al giocatore. */
@@ -71,6 +72,7 @@ export function mergeUpdatePacks(base: RawPlayer[], packs: UpdatePack[]): MergeR
         corners: patch.corners ?? current.corners,
         departureRisk: patch.departureRisk ?? current.departureRisk,
         rumor: patch.rumor ?? current.rumor,
+        returnEstimate: patch.returnEstimate ?? current.returnEstimate,
         isNew: patch.isNew ?? current.isNew,
         sourceSnapshot: patch.pricedIn
           ? { ...current.sourceSnapshot, pricedIn: { ...current.sourceSnapshot.pricedIn, ...patch.pricedIn } }

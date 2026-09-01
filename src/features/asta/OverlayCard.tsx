@@ -74,7 +74,7 @@ export function OverlayCard({
       <div className="relative flex items-center gap-2">
         <RoleBadge role={player.role} />
         <FasciaBadge fascia={player.fascia} uncertain={player.fasciaUncertain} />
-        <StarterBadge starter={player.starter} starterPct={player.starterPct} />
+        <StarterBadge starter={player.starter} starterPct={player.starterPct} returnEstimate={player.returnEstimate} />
         <h2 className="font-display flex-1 truncate text-lg font-bold text-neutral-50">{player.name}</h2>
         <ConfidenceDot confidence={player.pricing.confidence} />
       </div>

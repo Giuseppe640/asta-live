@@ -130,7 +130,7 @@ export function ScoutingTable({
                           <FasciaBadge fascia={p.fascia} uncertain={p.fasciaUncertain} />
                         </td>
                         <td className="hidden px-3 py-2 xl:table-cell">
-                          <StarterBadge starter={p.starter} starterPct={p.starterPct} />
+                          <StarterBadge starter={p.starter} starterPct={p.starterPct} returnEstimate={p.returnEstimate} />
                         </td>
                         <td className="max-w-40 truncate px-3 py-2 font-medium text-neutral-100">{p.name}</td>
                         <td className="hidden max-w-32 truncate px-3 py-2 text-neutral-500 xl:table-cell">{p.team}</td>

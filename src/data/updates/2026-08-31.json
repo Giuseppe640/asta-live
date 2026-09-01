@@ -13,7 +13,8 @@
       "name": "Zaniolo",
       "starter": "out",
       "starterPct": 10,
-      "rumor": "Comunicato ufficiale Udinese: lesione muscolare al bicipite femorale della coscia destra, prognosi 3-4 settimane"
+      "rumor": "Comunicato ufficiale Udinese: lesione muscolare al bicipite femorale della coscia destra, prognosi 3-4 settimane",
+      "returnEstimate": "3-4 settimane"
     },
     {
       "id": "6925",
