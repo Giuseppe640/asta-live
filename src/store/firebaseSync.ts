@@ -1,5 +1,5 @@
 import { initializeApp, type FirebaseApp } from "firebase/app";
-import { getDatabase, onChildAdded, onValue, push as dbPush, ref, set as dbSet, type Database } from "firebase/database";
+import { getDatabase, onChildAdded, onValue, orderByChild, push as dbPush, query, ref, set as dbSet, type Database } from "firebase/database";
 import { FIREBASE_CONFIG } from "./firebaseConfig";
 import type { AuctionEvent } from "../types";
 
@@ -44,13 +44,21 @@ export function clearRoom(roomCode: string): void {
 
 /**
  * Si iscrive alla stanza: `onEvent` viene chiamato per ogni evento già presente (storico,
- * in ordine di scrittura) e poi per ogni nuovo evento che arriva da qualsiasi dispositivo,
- * incluso il proprio (lo store deduplica per id).
+ * in ordine cronologico di `createdAt`) e poi per ogni nuovo evento che arriva da qualsiasi
+ * dispositivo, incluso il proprio (lo store deduplica per id).
+ *
+ * La chiave su Firebase è `event.id` (un UUID casuale, per poter riscrivere lo stesso evento
+ * senza duplicarlo), NON una push-key cronologica: senza `orderByChild("createdAt")`, Firebase
+ * consegna i figli ordinati per chiave, cioè in ordine essenzialmente casuale rispetto a quando
+ * sono davvero avvenuti. Per un dispositivo che si collega a metà asta e riceve tutto lo storico
+ * in un colpo solo, questo bastava a mescolare l'ordine di replay — assign/unassign dello stesso
+ * giocatore applicati fuori ordine generavano conflitti fasulli e, in alcuni casi, uno stato
+ * finale sbagliato (non l'ultimo evento vero applicato per ultimo).
  */
 export function subscribeToRoom(roomCode: string, onEvent: (event: AuctionEvent) => void): () => void {
   const database = getDb();
   if (!database) return () => {};
-  const eventsRef = ref(database, eventsPath(roomCode));
+  const eventsRef = query(ref(database, eventsPath(roomCode)), orderByChild("createdAt"));
   const unsubscribe = onChildAdded(eventsRef, (snapshot) => {
     const event = snapshot.val() as AuctionEvent | null;
     if (event) onEvent(event);
