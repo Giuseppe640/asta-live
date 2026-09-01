@@ -36,7 +36,7 @@ export function RoseView() {
         return (
           <div
             key={team.id}
-            className={`overflow-hidden rounded-2xl border shadow-card transition-colors ${
+            className={`min-w-0 overflow-hidden rounded-2xl border shadow-card transition-colors ${
               isMine ? "border-brand-500/30 bg-brand-500/[0.06]" : "border-white/10 bg-neutral-900/60"
             } ${isOpen ? "lg:col-span-full" : ""}`}
           >
@@ -129,7 +129,7 @@ export function RoseView() {
                     .map(({ entry, player }) => (
                       <li key={entry.playerId} className="flex items-center gap-2 py-2 text-sm">
                         <RoleBadge role={player!.role} />
-                        <span className="flex-1 truncate text-neutral-200">{player!.name}</span>
+                        <span className="min-w-0 flex-1 truncate text-neutral-200">{player!.name}</span>
                         <span className="font-display tabular-nums text-neutral-400">{entry.price}</span>
                         <button
                           type="button"
