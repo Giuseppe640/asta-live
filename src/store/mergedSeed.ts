@@ -1,4 +1,4 @@
-import playersSeed from "../data/players.2026-08-30.json";
+import playersSeed from "../data/players.2026-09-01.json";
 import type { RawPlayer } from "./loadPack";
 import { loadAllUpdatePacks, mergeUpdatePacks } from "./updatePack";
 

@@ -264,7 +264,7 @@ function healthLevel(covered: number, total: number): DataHealthLevel {
 /**
  * §12-13 del prompt Radar/Rivali: copertura *reale* del dataset, non proprietà TypeScript
  * valorizzate con default. Titolarità/rigori/rischio uscita partono tutti da un default neutro
- * uguale per tutti i 523 giocatori (vedi scripts/import_listone.py) — l'unico modo per sapere se
+ * uguale per tutti i giocatori del listone (vedi scripts/import_listone.py) — l'unico modo per sapere se
  * un valore è stato davvero verificato è controllare se un pack di aggiornamento lo ha toccato
  * per quello specifico id, non leggere il valore corrente del giocatore.
  */

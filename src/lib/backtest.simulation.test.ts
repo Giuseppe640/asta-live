@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import rawPlayers from "../data/players.2026-08-30.json";
+import rawPlayers from "../data/players.2026-09-01.json";
 import { runSimulation, type RunResult, type SimPlayerSeed, type Violation } from "./simulate";
 import { NUM_TEAMS, ROSTER_SIZE } from "./constants";
 

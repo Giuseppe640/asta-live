@@ -1,0 +1,88 @@
+{
+  "date": "2026-09-01",
+  "source": "Ricerca web (deadline day mercato estivo, chiusura ore 20:00): fanpage.it, sportitalia.it, sky.it, goal.com (live calciomercato 1/09); sportmediaset.mediaset.it, footmercato.net, lazionews24.com, lazialita.com, napolimagazine.com, thelaziali.com (Dia-Rennes); corrieredellosport.it, tuttomercatoweb.com, sosfanta.com, iamnaples.it, calcionapoli24.it, calcionapoli1926.it (infortuni Napoli: Buongiorno, Marianucci, Neres); pianetamilan.it, ilmilanista.it, sportmediaset.mediaset.it, sportal.it, milannews24.com, milannews.it, milanpress.it (Tomori/Fofana/Gimenez esclusi dal progetto Milan); tuttoatalanta.com, gianlucadimarzio.com, tuttojuve.com, calcioatalanta.it, ilmessaggero.it, fantamaster.it (Rowe/Cabal/Tagliafico domino Atalanta-Juventus-Bologna); linterista.it, fcinter1908.it, sport.sky.it, buoncalcioatutti.it, cronachedi.it, trivenetogoal.it, football-italia.net, areanapoli.it (Norton-Cuffy al Venezia); ansa.it, fantacalcio.it, telefriuli.it, fantamaster.it (infortuni Chakvetadze/Zanoli Udinese)",
+  "patches": [
+    {
+      "id": "5672",
+      "name": "Dia",
+      "departureRisk": 75,
+      "rumor": "Accordo totale raggiunto con il Rennes (prestito con diritto/obbligo di riscatto, operazione da 10M): autorizzato a viaggiare, visite mediche in Francia il 1/09"
+    },
+    {
+      "id": "2724",
+      "name": "Buongiorno",
+      "starter": "out",
+      "starterPct": 5,
+      "rumor": "Operato al ginocchio destro il 23/07: rientro stimato non prima di dicembre 2026, con alcune fonti che parlano addirittura di inizio 2027"
+    },
+    {
+      "id": "6809",
+      "name": "Marianucci",
+      "starter": "out",
+      "starterPct": 10,
+      "rumor": "Lesione di alto grado al collaterale mediale del ginocchio sinistro (amichevole vs Celta Vigo): obiettivo rientro prima metà di ottobre 2026"
+    },
+    {
+      "id": "6831",
+      "name": "Neres",
+      "starter": "ballottaggio",
+      "starterPct": 40,
+      "rumor": "Assente alla 1ª giornata, ma vicino al rientro: Allegri punta a riaverlo tra i convocati per la 2ª giornata contro il Como"
+    },
+    {
+      "id": "4751",
+      "name": "Tomori",
+      "starter": "out",
+      "starterPct": 5,
+      "departureRisk": 35,
+      "rumor": "Trattativa con l'Aston Villa saltata nelle ultime 48 ore; insieme a Fofana e Gimenez è escluso dal progetto tecnico Milan, allenamenti separati e fuori dalla lista Serie A salvo offerta last-minute entro le 20:00"
+    },
+    {
+      "id": "4686",
+      "name": "Fofana Y.",
+      "starter": "out",
+      "starterPct": 5,
+      "departureRisk": 55,
+      "rumor": "Trattativa avanzata col Galatasaray (opzione preferita dal giocatore), pista Lione alternativa; escluso dal progetto tecnico Milan come Tomori e Gimenez"
+    },
+    {
+      "id": "7008",
+      "name": "Gimenez",
+      "starter": "out",
+      "starterPct": 5,
+      "rumor": "Escluso dal progetto tecnico Milan insieme a Tomori e Fofana (allenamenti separati, fuori lista), oltre al trasferimento in corso al Porto"
+    },
+    {
+      "id": "6844",
+      "name": "Rowe",
+      "departureRisk": 75,
+      "rumor": "Via libera per l'Atalanta: prestito oneroso da 5M con obbligo di riscatto a 30M+5, atteso a Bergamo il 1/09 per visite mediche e firma"
+    },
+    {
+      "id": "6039",
+      "name": "Cabal",
+      "departureRisk": 50,
+      "rumor": "Contatti vivi Juventus-Atalanta, proposta ufficiale attesa (prestito con diritto di riscatto): la sua cessione sbloccherebbe l'arrivo di Tagliafico a Torino"
+    },
+    {
+      "id": "6814",
+      "name": "Norton-Cuffy",
+      "departureRisk": 70,
+      "rumor": "Trattativa in stato avanzato col Venezia (14M + prestito/cessione di Sagrado al Genoa): manca solo l'ok definitivo del giocatore"
+    },
+    {
+      "id": "7418",
+      "name": "Chakvetadze",
+      "starter": "out",
+      "starterPct": 15,
+      "rumor": "Frattura al terzo metatarso del piede destro: rientro stimato nella prima metà di settembre 2026"
+    },
+    {
+      "id": "5527",
+      "name": "Zanoli",
+      "starter": "out",
+      "starterPct": 10,
+      "rumor": "Recupero dall'intervento al crociato del ginocchio destro: rientro atteso dopo la sosta nazionali di settembre, alcune fonti indicano addirittura ottobre"
+    }
+  ]
+}
