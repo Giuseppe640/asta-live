@@ -89,6 +89,9 @@ export function OverlayCard({
           <div>
             vale circa <span className="font-semibold text-neutral-200">{live.fairLive != null ? Math.round(live.fairLive) : "—"}</span>
           </div>
+          <div className="text-xs text-neutral-500" title="Valore stimato prima che iniziasse l'asta, non cambia con domanda/inflazione">
+            base: {player.pricing.fairSeed != null ? Math.round(player.pricing.fairSeed) : "—"}
+          </div>
           <div className="mt-1 flex items-center justify-end gap-1">
             <span className="text-[10px] uppercase text-neutral-500">domanda</span>
             <DemandLabelBadge label={live.demand.demandLabel} />
@@ -189,8 +192,6 @@ export function OverlayCard({
           </dd>
           <dt>Quotazione Fantacalcio.it (FVM)</dt>
           <dd className="text-right text-neutral-200">{player.sourceSnapshot.fvm1000 ?? "—"}</dd>
-          <dt>Valore di partenza (prima dell'asta)</dt>
-          <dd className="text-right text-neutral-200">{player.pricing.fairSeed != null ? Math.round(player.pricing.fairSeed) : "—"}</dd>
           <dt>Valore adesso (con l'asta in corso)</dt>
           <dd className="text-right text-neutral-200">{live.fairLive != null ? Math.round(live.fairLive) : "—"}</dd>
           <dt>Affidabilità della stima</dt>
