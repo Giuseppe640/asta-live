@@ -1,5 +1,5 @@
 import { initializeApp, type FirebaseApp } from "firebase/app";
-import { getDatabase, onChildAdded, push as dbPush, ref, set as dbSet, type Database } from "firebase/database";
+import { getDatabase, onChildAdded, onValue, push as dbPush, ref, set as dbSet, type Database } from "firebase/database";
 import { FIREBASE_CONFIG } from "./firebaseConfig";
 import type { AuctionEvent } from "../types";
 
@@ -54,6 +54,24 @@ export function subscribeToRoom(roomCode: string, onEvent: (event: AuctionEvent)
   const unsubscribe = onChildAdded(eventsRef, (snapshot) => {
     const event = snapshot.val() as AuctionEvent | null;
     if (event) onEvent(event);
+  });
+  return () => unsubscribe();
+}
+
+/**
+ * Stato REALE della connessione al server Firebase (non "abbiamo provato ad iscriverci", che è
+ * sempre vero appena si chiama subscribeToRoom). `.info/connected` è un path speciale gestito
+ * dall'SDK stesso: cala a false appena la connessione cade (rete persa, scheda sospesa dal
+ * sistema su mobile...) e torna true da sola alla riconnessione, senza bisogno di ricollegarsi
+ * manualmente. Necessario perché la UI possa mostrare "connesso" solo quando è vero, non solo
+ * quando ci si è iscritti una volta.
+ */
+export function subscribeToConnectionState(onChange: (connected: boolean) => void): () => void {
+  const database = getDb();
+  if (!database) return () => {};
+  const connectedRef = ref(database, ".info/connected");
+  const unsubscribe = onValue(connectedRef, (snapshot) => {
+    onChange(snapshot.val() === true);
   });
   return () => unsubscribe();
 }

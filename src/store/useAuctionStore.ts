@@ -4,7 +4,7 @@ import { idbStorage } from "./db";
 import { buildInitialPlayers, type RawPlayer } from "./loadPack";
 import { computeTeamBudget, recomputeBandsInPlace } from "./selectors";
 import { ROLE_SLOTS } from "../lib/constants";
-import { clearRoom, isSyncConfigured, pushEventToRoom, subscribeToRoom } from "./firebaseSync";
+import { clearRoom, isSyncConfigured, pushEventToRoom, subscribeToConnectionState, subscribeToRoom } from "./firebaseSync";
 import type { AuctionEvent, FantasyTeam, Fascia, Player, TeamProfile, Watch } from "../types";
 
 export interface AssignResult {
@@ -115,6 +115,7 @@ type PersistedAuctionState = Pick<
 >;
 
 let roomUnsubscribe: (() => void) | null = null;
+let connectionUnsubscribe: (() => void) | null = null;
 
 export const useAuctionStore = create<AuctionStore>()(
   persist<AuctionStore, [], [], PersistedAuctionState>(
@@ -364,19 +365,25 @@ export const useAuctionStore = create<AuctionStore>()(
         if (!code) return { ok: false, reason: "Codice stanza vuoto" };
 
         roomUnsubscribe?.();
+        connectionUnsubscribe?.();
         set({ roomCode: code, syncStatus: "connecting" });
         roomUnsubscribe = subscribeToRoom(code, (event) => {
           get()._applyRemoteEvent(event);
         });
-        // l'SDK Firebase gestisce riconnessione/coda offline in autonomia: una volta agganciato
-        // il listener consideriamo la stanza "connected" anche se non ci sono ancora eventi.
-        set({ syncStatus: "connected" });
+        // stato di connessione REALE (non "ci siamo iscritti una volta"): .info/connected
+        // dell'SDK Firebase cala da solo se la connessione cade (rete persa, scheda sospesa dal
+        // sistema su mobile) e torna su da solo alla riconnessione, senza bisogno di ricollegarsi.
+        connectionUnsubscribe = subscribeToConnectionState((connected) => {
+          if (get().roomCode === code) set({ syncStatus: connected ? "connected" : "connecting" });
+        });
         return { ok: true };
       },
 
       leaveRoom: () => {
         roomUnsubscribe?.();
         roomUnsubscribe = null;
+        connectionUnsubscribe?.();
+        connectionUnsubscribe = null;
         set({ roomCode: null, syncStatus: "disconnected" });
       },
 
@@ -485,6 +492,20 @@ export const useAuctionStore = create<AuctionStore>()(
     },
   ),
 );
+
+// Il browser (soprattutto su mobile, sia in scheda che come PWA da home screen) può sospendere
+// completamente una scheda in background: la connessione realtime a Firebase muore in silenzio
+// e non si riprende da sola alla riattivazione. Quando la scheda torna visibile, se una stanza
+// era attiva, ci si "ricollega" (stesso joinRoom usato per la riconnessione manuale): rifà
+// l'iscrizione da zero, innocuo per gli eventi già visti (dedup per id in _applyRemoteEvent),
+// ma recupera qualsiasi assegnazione arrivata mentre la connessione era morta.
+if (typeof document !== "undefined") {
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState !== "visible") return;
+    const state = useAuctionStore.getState();
+    if (state.roomCode) state.joinRoom(state.roomCode);
+  });
+}
 
 if (import.meta.env.DEV) {
   (window as unknown as { __store: typeof useAuctionStore }).__store = useAuctionStore;
