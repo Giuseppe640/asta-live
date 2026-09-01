@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { ChevronDown, Search, UserCheck } from "lucide-react";
 import { useAuctionStore } from "../../store/useAuctionStore";
 import { useIsDesktop } from "../../hooks/useMediaQuery";
-import { ConfidenceDot, FASCIA_NAMES, FasciaBadge, RoleBadge } from "../../components/Badges";
+import { ConfidenceDot, FASCIA_NAMES, FasciaBadge, RoleBadge, StarterBadge } from "../../components/Badges";
 import { ScoutingTable, type SortDir, type SortKey } from "./ScoutingTable";
 import { groupByFascia, groupKey, type FasciaGroup } from "./groupByFascia";
 import { WATCH_OPTIONS } from "./watchOptions";
@@ -151,6 +151,7 @@ export function ScoutingView() {
                           <div className="flex items-center gap-2">
                             <RoleBadge role={p.role} />
                             <FasciaBadge fascia={p.fascia} uncertain={p.fasciaUncertain} />
+                            <StarterBadge starter={p.starter} starterPct={p.starterPct} />
                             <div className="min-w-0 flex-1">
                               <p className="truncate text-sm font-medium text-neutral-100">{p.name}</p>
                               <p className="truncate text-xs text-neutral-500">{p.team}</p>

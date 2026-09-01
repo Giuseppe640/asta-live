@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { ChevronDown, Gavel, Minus, Plus, TriangleAlert } from "lucide-react";
-import { ConfidenceDot, DemandLabelBadge, FasciaBadge, RoleBadge } from "../../components/Badges";
+import { ConfidenceDot, DemandLabelBadge, FasciaBadge, RoleBadge, StarterBadge } from "../../components/Badges";
 import type { LivePricing } from "../../store/selectors";
 import type { LeavePlayerContext } from "./leaveContext";
 import type { Player } from "../../types";
@@ -74,6 +74,7 @@ export function OverlayCard({
       <div className="relative flex items-center gap-2">
         <RoleBadge role={player.role} />
         <FasciaBadge fascia={player.fascia} uncertain={player.fasciaUncertain} />
+        <StarterBadge starter={player.starter} starterPct={player.starterPct} />
         <h2 className="font-display flex-1 truncate text-lg font-bold text-neutral-50">{player.name}</h2>
         <ConfidenceDot confidence={player.pricing.confidence} />
       </div>

@@ -1,4 +1,4 @@
-import type { Fascia, Role } from "../types";
+import type { Fascia, Role, Starter } from "../types";
 
 const ROLE_COLORS: Record<Role, string> = {
   P: "bg-amber-500/20 text-amber-300 border-amber-500/40",
@@ -49,6 +49,33 @@ export function FasciaBadge({ fascia, uncertain }: { fascia: Fascia; uncertain?:
     >
       {fascia}
       {uncertain ? "?" : ""}
+    </span>
+  );
+}
+
+const STARTER_COLORS: Record<Starter, string> = {
+  fisso: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
+  ballottaggio: "bg-amber-500/20 text-amber-300 border-amber-500/40",
+  ruota: "bg-amber-500/20 text-amber-300 border-amber-500/40",
+  riserva: "bg-neutral-600/20 text-neutral-400 border-neutral-600/40",
+  out: "bg-rose-500/20 text-rose-300 border-rose-500/40",
+};
+
+const STARTER_LABELS: Record<Starter, string> = {
+  fisso: "Titolare",
+  ballottaggio: "Ballottaggio",
+  ruota: "A rotazione",
+  riserva: "Riserva",
+  out: "Indisponibile",
+};
+
+export function StarterBadge({ starter, starterPct }: { starter: Starter; starterPct: number }) {
+  return (
+    <span
+      title={`${STARTER_LABELS[starter]} — probabilità di giocare titolare: ${starterPct}%`}
+      className={`inline-flex h-6 min-w-9 items-center justify-center rounded-lg border px-1.5 text-[11px] font-bold tabular-nums ${STARTER_COLORS[starter]}`}
+    >
+      {starterPct}%
     </span>
   );
 }

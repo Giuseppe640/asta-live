@@ -1,0 +1,2636 @@
+{
+  "date": "2026-08-29",
+  "source": "Ricerca web una tantum (baseline titolarita/gerarchie squadra per squadra, tutte le 20 squadre di Serie A, 526 giocatori): probabili formazioni, gerarchie portieri/reparti, infortuni e ballottaggi noti a inizio stagione 2026/27. Datato prima dei pack giornalieri successivi cosi che le notizie piu recenti su singoli giocatori vincano sempre su questa base.",
+  "patches": [
+    {
+      "id": "4431",
+      "starter": "fisso",
+      "starterPct": 90
+    },
+    {
+      "id": "4",
+      "starter": "riserva",
+      "starterPct": 13
+    },
+    {
+      "id": "7545",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "7533",
+      "starter": "riserva",
+      "starterPct": 6
+    },
+    {
+      "id": "7172",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "133",
+      "starter": "fisso",
+      "starterPct": 87
+    },
+    {
+      "id": "4360",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "3",
+      "starter": "riserva",
+      "starterPct": 6
+    },
+    {
+      "id": "6650",
+      "starter": "riserva",
+      "starterPct": 14
+    },
+    {
+      "id": "6966",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "2809",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "6403",
+      "starter": "riserva",
+      "starterPct": 13
+    },
+    {
+      "id": "2521",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "158",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "7463",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "7466",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "6415",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "7560",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "7332",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "219",
+      "starter": "riserva",
+      "starterPct": 6
+    },
+    {
+      "id": "6569",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "1926",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "5116",
+      "starter": "fisso",
+      "starterPct": 86
+    },
+    {
+      "id": "2814",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "7603",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "1930",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "4964",
+      "starter": "fisso",
+      "starterPct": 90
+    },
+    {
+      "id": "6482",
+      "starter": "fisso",
+      "starterPct": 87
+    },
+    {
+      "id": "7337",
+      "starter": "riserva",
+      "starterPct": 13
+    },
+    {
+      "id": "7534",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "4468",
+      "starter": "riserva",
+      "starterPct": 13
+    },
+    {
+      "id": "2134",
+      "starter": "fisso",
+      "starterPct": 90
+    },
+    {
+      "id": "7557",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "4312",
+      "starter": "fisso",
+      "starterPct": 92
+    },
+    {
+      "id": "2815",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "6813",
+      "starter": "riserva",
+      "starterPct": 6
+    },
+    {
+      "id": "7475",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "4485",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "7301",
+      "starter": "riserva",
+      "starterPct": 6
+    },
+    {
+      "id": "2845",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "572",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "2170",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "6662",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "7411",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "7048",
+      "starter": "riserva",
+      "starterPct": 6
+    },
+    {
+      "id": "610",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "5841",
+      "starter": "fisso",
+      "starterPct": 93
+    },
+    {
+      "id": "4236",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "4518",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "2127",
+      "starter": "riserva",
+      "starterPct": 6
+    },
+    {
+      "id": "4867",
+      "starter": "riserva",
+      "starterPct": 14
+    },
+    {
+      "id": "7457",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "5320",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "6534",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "7363",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "7611",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "6462",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "543",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "5707",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "6671",
+      "starter": "riserva",
+      "starterPct": 7
+    },
+    {
+      "id": "4957",
+      "starter": "riserva",
+      "starterPct": 14
+    },
+    {
+      "id": "7531",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "6248",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "5995",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6435",
+      "starter": "ballottaggio",
+      "starterPct": 46
+    },
+    {
+      "id": "4371",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "2137",
+      "starter": "ballottaggio",
+      "starterPct": 58
+    },
+    {
+      "id": "5918",
+      "starter": "out",
+      "starterPct": 5
+    },
+    {
+      "id": "5792",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "4479",
+      "starter": "ruota",
+      "starterPct": 42
+    },
+    {
+      "id": "4364",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "1850",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "2077",
+      "starter": "ballottaggio",
+      "starterPct": 46
+    },
+    {
+      "id": "5119",
+      "starter": "ballottaggio",
+      "starterPct": 54
+    },
+    {
+      "id": "6024",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "5422",
+      "starter": "ruota",
+      "starterPct": 38
+    },
+    {
+      "id": "6916",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "4887",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "7219",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6046",
+      "starter": "out",
+      "starterPct": 5
+    },
+    {
+      "id": "2640",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "5578",
+      "starter": "ballottaggio",
+      "starterPct": 56
+    },
+    {
+      "id": "6485",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "5526",
+      "starter": "fisso",
+      "starterPct": 90
+    },
+    {
+      "id": "554",
+      "starter": "ballottaggio",
+      "starterPct": 58
+    },
+    {
+      "id": "6675",
+      "starter": "ballottaggio",
+      "starterPct": 46
+    },
+    {
+      "id": "4359",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "7528",
+      "starter": "ruota",
+      "starterPct": 36
+    },
+    {
+      "id": "184",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "4436",
+      "starter": "ballottaggio",
+      "starterPct": 52
+    },
+    {
+      "id": "6225",
+      "starter": "out",
+      "starterPct": 5
+    },
+    {
+      "id": "5858",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "6054",
+      "starter": "ruota",
+      "starterPct": 38
+    },
+    {
+      "id": "2765",
+      "starter": "ballottaggio",
+      "starterPct": 50
+    },
+    {
+      "id": "2167",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "5298",
+      "starter": "ballottaggio",
+      "starterPct": 52
+    },
+    {
+      "id": "6844",
+      "starter": "out",
+      "starterPct": 5
+    },
+    {
+      "id": "7483",
+      "starter": "ruota",
+      "starterPct": 35
+    },
+    {
+      "id": "5498",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "487",
+      "starter": "riserva",
+      "starterPct": 6
+    },
+    {
+      "id": "7212",
+      "starter": "ballottaggio",
+      "starterPct": 58
+    },
+    {
+      "id": "7326",
+      "starter": "ballottaggio",
+      "starterPct": 56
+    },
+    {
+      "id": "5678",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "4734",
+      "starter": "ballottaggio",
+      "starterPct": 58
+    },
+    {
+      "id": "5675",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "7068",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "4433",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "6243",
+      "starter": "riserva",
+      "starterPct": 14
+    },
+    {
+      "id": "7547",
+      "starter": "ruota",
+      "starterPct": 38
+    },
+    {
+      "id": "4896",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "7374",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6598",
+      "starter": "riserva",
+      "starterPct": 14
+    },
+    {
+      "id": "7317",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "4870",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "5462",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "1871",
+      "starter": "ballottaggio",
+      "starterPct": 58
+    },
+    {
+      "id": "6815",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "6010",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "6640",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "801",
+      "starter": "riserva",
+      "starterPct": 14
+    },
+    {
+      "id": "7165",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "7579",
+      "starter": "riserva",
+      "starterPct": 16
+    },
+    {
+      "id": "7311",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "4260",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "7548",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "7125",
+      "starter": "out",
+      "starterPct": 5
+    },
+    {
+      "id": "7532",
+      "starter": "riserva",
+      "starterPct": 16
+    },
+    {
+      "id": "4210",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "5701",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "7268",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7274",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7027",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "6967",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7017",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "7128",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "7127",
+      "starter": "out",
+      "starterPct": 5
+    },
+    {
+      "id": "7126",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "5036",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "5559",
+      "starter": "ballottaggio",
+      "starterPct": 58
+    },
+    {
+      "id": "7357",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "6678",
+      "starter": "ruota",
+      "starterPct": 36
+    },
+    {
+      "id": "7412",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "6875",
+      "starter": "fisso",
+      "starterPct": 93
+    },
+    {
+      "id": "6151",
+      "starter": "fisso",
+      "starterPct": 84
+    },
+    {
+      "id": "5453",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "7129",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "5641",
+      "starter": "fisso",
+      "starterPct": 84
+    },
+    {
+      "id": "6727",
+      "starter": "ballottaggio",
+      "starterPct": 58
+    },
+    {
+      "id": "418",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "7414",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "6601",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "6893",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "6869",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "7014",
+      "starter": "ruota",
+      "starterPct": 38
+    },
+    {
+      "id": "6867",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "2097",
+      "starter": "out",
+      "starterPct": 0
+    },
+    {
+      "id": "7023",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6908",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "4947",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "4465",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "5800",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "1933",
+      "starter": "ballottaggio",
+      "starterPct": 56
+    },
+    {
+      "id": "7078",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6294",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6827",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "7464",
+      "starter": "ruota",
+      "starterPct": 38
+    },
+    {
+      "id": "5885",
+      "starter": "out",
+      "starterPct": 5
+    },
+    {
+      "id": "5365",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "6531",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "7175",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "5449",
+      "starter": "out",
+      "starterPct": 3
+    },
+    {
+      "id": "5603",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "4378",
+      "starter": "fisso",
+      "starterPct": 84
+    },
+    {
+      "id": "7294",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "7410",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "7610",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "7612",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "6530",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "6204",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "5436",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "7472",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "7473",
+      "starter": "ballottaggio",
+      "starterPct": 50
+    },
+    {
+      "id": "7456",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "6506",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "6241",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "7550",
+      "starter": "ruota",
+      "starterPct": 35
+    },
+    {
+      "id": "6903",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "5725",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "7474",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "6917",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "7551",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "5998",
+      "starter": "ruota",
+      "starterPct": 35
+    },
+    {
+      "id": "7540",
+      "starter": "ruota",
+      "starterPct": 35
+    },
+    {
+      "id": "5424",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "7469",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7467",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "5757",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "4952",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "7553",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "6238",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7605",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "4375",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "4923",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "7453",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "7600",
+      "starter": "ruota",
+      "starterPct": 35
+    },
+    {
+      "id": "6164",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7341",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "5823",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6020",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "5791",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "7409",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "4970",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "5946",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "2857",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "6980",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "6660",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "2593",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "7537",
+      "starter": "ruota",
+      "starterPct": 35
+    },
+    {
+      "id": "6814",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "5750",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "6977",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "7413",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "791",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "5514",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "6669",
+      "starter": "ruota",
+      "starterPct": 35
+    },
+    {
+      "id": "7071",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "2764",
+      "starter": "fisso",
+      "starterPct": 90
+    },
+    {
+      "id": "4871",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "1870",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "2194",
+      "starter": "fisso",
+      "starterPct": 90
+    },
+    {
+      "id": "6274",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "5172",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "5301",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "2529",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "6503",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "7070",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "152",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "4159",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "2120",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "6217",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "5877",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "254",
+      "starter": "fisso",
+      "starterPct": 90
+    },
+    {
+      "id": "4177",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "5982",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "2514",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "2832",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "5544",
+      "starter": "out",
+      "starterPct": 0
+    },
+    {
+      "id": "6822",
+      "starter": "out",
+      "starterPct": 8
+    },
+    {
+      "id": "5951",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "2012",
+      "starter": "out",
+      "starterPct": 0
+    },
+    {
+      "id": "6434",
+      "starter": "out",
+      "starterPct": 5
+    },
+    {
+      "id": "7436",
+      "starter": "ballottaggio",
+      "starterPct": 50
+    },
+    {
+      "id": "6884",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "4911",
+      "starter": "ballottaggio",
+      "starterPct": 58
+    },
+    {
+      "id": "4179",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "5685",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "827",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "4973",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "5562",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "5761",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "2788",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "6039",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "5520",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "4657",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "5831",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "4976",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "6766",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "6042",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "294",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "5672",
+      "starter": "out",
+      "starterPct": 8
+    },
+    {
+      "id": "6556",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "2038",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "7313",
+      "starter": "out",
+      "starterPct": 0
+    },
+    {
+      "id": "6191",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "5500",
+      "starter": "ballottaggio",
+      "starterPct": 50
+    },
+    {
+      "id": "333",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "6629",
+      "starter": "out",
+      "starterPct": 8
+    },
+    {
+      "id": "2848",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "6398",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "7345",
+      "starter": "riserva",
+      "starterPct": 6
+    },
+    {
+      "id": "4459",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "7314",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "632",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "6320",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "7131",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "2263",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "2188",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "327",
+      "starter": "riserva",
+      "starterPct": 6
+    },
+    {
+      "id": "4817",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "2728",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "7012",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "460",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "7580",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "5620",
+      "starter": "ruota",
+      "starterPct": 35
+    },
+    {
+      "id": "7602",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "5029",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "7001",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7252",
+      "starter": "ruota",
+      "starterPct": 38
+    },
+    {
+      "id": "6015",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "5504",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "7319",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "7318",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "7248",
+      "starter": "ballottaggio",
+      "starterPct": 52
+    },
+    {
+      "id": "5007",
+      "starter": "ballottaggio",
+      "starterPct": 46
+    },
+    {
+      "id": "6410",
+      "starter": "out",
+      "starterPct": 0
+    },
+    {
+      "id": "7571",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "5457",
+      "starter": "ruota",
+      "starterPct": 38
+    },
+    {
+      "id": "7619",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "7322",
+      "starter": "ballottaggio",
+      "starterPct": 58
+    },
+    {
+      "id": "6549",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6826",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "4502",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "6632",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6883",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "7182",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "7240",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "6989",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "6990",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6519",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "6397",
+      "starter": "fisso",
+      "starterPct": 92
+    },
+    {
+      "id": "4856",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6618",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7572",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "4686",
+      "starter": "out",
+      "starterPct": 3
+    },
+    {
+      "id": "7203",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "4199",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "2606",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "6372",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "5295",
+      "starter": "ballottaggio",
+      "starterPct": 58
+    },
+    {
+      "id": "2423",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "2379",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "4892",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "6496",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "5739",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7525",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "5273",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "4401",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "5833",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "5022",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "5812",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "4751",
+      "starter": "out",
+      "starterPct": 3
+    },
+    {
+      "id": "2155",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "5882",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "6145",
+      "starter": "ballottaggio",
+      "starterPct": 50
+    },
+    {
+      "id": "7546",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "7523",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6593",
+      "starter": "ruota",
+      "starterPct": 38
+    },
+    {
+      "id": "5880",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "7477",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "5878",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "7574",
+      "starter": "ballottaggio",
+      "starterPct": 50
+    },
+    {
+      "id": "6252",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "6592",
+      "starter": "ruota",
+      "starterPct": 38
+    },
+    {
+      "id": "7575",
+      "starter": "ballottaggio",
+      "starterPct": 46
+    },
+    {
+      "id": "2741",
+      "starter": "out",
+      "starterPct": 8
+    },
+    {
+      "id": "7146",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "5399",
+      "starter": "ballottaggio",
+      "starterPct": 46
+    },
+    {
+      "id": "7476",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "5838",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "4925",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "2115",
+      "starter": "ballottaggio",
+      "starterPct": 46
+    },
+    {
+      "id": "7238",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "6659",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "7485",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7604",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "7260",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "7162",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "6052",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "7120",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "6215",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "6831",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "7351",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "2517",
+      "starter": "ballottaggio",
+      "starterPct": 50
+    },
+    {
+      "id": "5131",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "4287",
+      "starter": "fisso",
+      "starterPct": 90
+    },
+    {
+      "id": "4777",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "536",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7223",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "4220",
+      "starter": "ballottaggio",
+      "starterPct": 58
+    },
+    {
+      "id": "4664",
+      "starter": "ballottaggio",
+      "starterPct": 46
+    },
+    {
+      "id": "6202",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "2724",
+      "starter": "out",
+      "starterPct": 5
+    },
+    {
+      "id": "2816",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "7563",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "6809",
+      "starter": "out",
+      "starterPct": 5
+    },
+    {
+      "id": "6638",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "5840",
+      "starter": "ballottaggio",
+      "starterPct": 46
+    },
+    {
+      "id": "4409",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "1852",
+      "starter": "ballottaggio",
+      "starterPct": 58
+    },
+    {
+      "id": "7568",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "7342",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "7213",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "7561",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "7554",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "6229",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "6207",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "6666",
+      "starter": "fisso",
+      "starterPct": 92
+    },
+    {
+      "id": "7276",
+      "starter": "ruota",
+      "starterPct": 38
+    },
+    {
+      "id": "7536",
+      "starter": "ruota",
+      "starterPct": 38
+    },
+    {
+      "id": "6206",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "6898",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "4349",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "7138",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7209",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "7255",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "6149",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "6664",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "7615",
+      "starter": "ballottaggio",
+      "starterPct": 52
+    },
+    {
+      "id": "7202",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "7235",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "5307",
+      "starter": "ballottaggio",
+      "starterPct": 46
+    },
+    {
+      "id": "5862",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6572",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "309",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "5585",
+      "starter": "fisso",
+      "starterPct": 92
+    },
+    {
+      "id": "5734",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "6981",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "779",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "22",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "6271",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "5589",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "7556",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "530",
+      "starter": "ruota",
+      "starterPct": 38
+    },
+    {
+      "id": "6190",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "4705",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "6631",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "4807",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7529",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "7599",
+      "starter": "ruota",
+      "starterPct": 45
+    },
+    {
+      "id": "2296",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "4998",
+      "starter": "ballottaggio",
+      "starterPct": 50
+    },
+    {
+      "id": "4317",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "6986",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "7181",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "531",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "7347",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "4463",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "6060",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "6677",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7036",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6219",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "6895",
+      "starter": "riserva",
+      "starterPct": 15
+    },
+    {
+      "id": "7157",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "6717",
+      "starter": "out",
+      "starterPct": 5
+    },
+    {
+      "id": "6246",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "2528",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "5844",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "5735",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "6985",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "7573",
+      "starter": "ruota",
+      "starterPct": 48
+    },
+    {
+      "id": "5851",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6672",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7564",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "7396",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "7329",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "7154",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7156",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "6896",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "4374",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "6646",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "7349",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "2061",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "608",
+      "starter": "ruota",
+      "starterPct": 40
+    },
+    {
+      "id": "7183",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "6889",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "7060",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "5888",
+      "starter": "ruota",
+      "starterPct": 50
+    },
+    {
+      "id": "7535",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6170",
+      "starter": "ballottaggio",
+      "starterPct": 50
+    },
+    {
+      "id": "6005",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "6218",
+      "starter": "ballottaggio",
+      "starterPct": 45
+    },
+    {
+      "id": "5687",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "252",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "6642",
+      "starter": "ballottaggio",
+      "starterPct": 50
+    },
+    {
+      "id": "7526",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6495",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7069",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "5010",
+      "starter": "ruota",
+      "starterPct": 42
+    },
+    {
+      "id": "7161",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "5637",
+      "starter": "ballottaggio",
+      "starterPct": 58
+    },
+    {
+      "id": "7272",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "7418",
+      "starter": "out",
+      "starterPct": 5
+    },
+    {
+      "id": "6684",
+      "starter": "fisso",
+      "starterPct": 82
+    },
+    {
+      "id": "6680",
+      "starter": "fisso",
+      "starterPct": 85
+    },
+    {
+      "id": "7208",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "7198",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6783",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "2766",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "6212",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "6021",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "7312",
+      "starter": "riserva",
+      "starterPct": 12
+    },
+    {
+      "id": "5820",
+      "starter": "ballottaggio",
+      "starterPct": 48
+    },
+    {
+      "id": "5994",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "4263",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "5555",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7356",
+      "starter": "riserva",
+      "starterPct": 8
+    },
+    {
+      "id": "6925",
+      "starter": "out",
+      "starterPct": 10
+    },
+    {
+      "id": "6956",
+      "starter": "fisso",
+      "starterPct": 88
+    },
+    {
+      "id": "4994",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "5527",
+      "starter": "out",
+      "starterPct": 5
+    },
+    {
+      "id": "7484",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "4387",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "7482",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "7408",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "7449",
+      "starter": "ruota",
+      "starterPct": 42
+    },
+    {
+      "id": "6904",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "5674",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "5507",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7481",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "526",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "5872",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "6994",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "5319",
+      "starter": "ruota",
+      "starterPct": 38
+    },
+    {
+      "id": "7253",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "4845",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7478",
+      "starter": "ballottaggio",
+      "starterPct": 55
+    },
+    {
+      "id": "7454",
+      "starter": "riserva",
+      "starterPct": 5
+    },
+    {
+      "id": "6821",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "7538",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "5695",
+      "starter": "riserva",
+      "starterPct": 18
+    },
+    {
+      "id": "256",
+      "starter": "riserva",
+      "starterPct": 20
+    },
+    {
+      "id": "5481",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "6890",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "6681",
+      "starter": "riserva",
+      "starterPct": 10
+    },
+    {
+      "id": "6892",
+      "starter": "fisso",
+      "starterPct": 80
+    },
+    {
+      "id": "6673",
+      "starter": "out",
+      "starterPct": 10
+    }
+  ]
+}

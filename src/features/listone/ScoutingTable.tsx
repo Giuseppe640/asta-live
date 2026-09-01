@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { ArrowDown, ArrowUp, ArrowUpDown, ChevronDown, UserCheck } from "lucide-react";
-import { ConfidenceDot, FASCIA_NAMES, FasciaBadge, RoleBadge } from "../../components/Badges";
+import { ConfidenceDot, FASCIA_NAMES, FasciaBadge, RoleBadge, StarterBadge } from "../../components/Badges";
 import { groupKey, type FasciaGroup } from "./groupByFascia";
 import { WATCH_OPTIONS } from "./watchOptions";
 import type { FantasyTeam, Role, Watch } from "../../types";
@@ -71,6 +71,9 @@ export function ScoutingTable({
             <th scope="col" className="hidden px-3 py-2.5 xl:table-cell">
               Fascia
             </th>
+            <th scope="col" className="hidden px-3 py-2.5 xl:table-cell">
+              Titolarità
+            </th>
             <th scope="col" className="px-3 py-2.5">
               Nome
             </th>
@@ -95,7 +98,7 @@ export function ScoutingTable({
             return (
               <Fragment key={key}>
                 <tr className={`border-b border-white/5 ${exhausted ? "bg-white/[0.01]" : "bg-white/[0.03]"}`}>
-                  <td colSpan={8} className="px-3 py-0">
+                  <td colSpan={9} className="px-3 py-0">
                     <button type="button" onClick={() => onToggleGroup(group)} className="flex h-10 w-full items-center gap-2 text-left">
                       <FasciaBadge fascia={group.fascia} />
                       {roleFilter === "ALL" && <RoleBadge role={group.role} />}
@@ -125,6 +128,9 @@ export function ScoutingTable({
                         </td>
                         <td className="hidden px-3 py-2 xl:table-cell">
                           <FasciaBadge fascia={p.fascia} uncertain={p.fasciaUncertain} />
+                        </td>
+                        <td className="hidden px-3 py-2 xl:table-cell">
+                          <StarterBadge starter={p.starter} starterPct={p.starterPct} />
                         </td>
                         <td className="max-w-40 truncate px-3 py-2 font-medium text-neutral-100">{p.name}</td>
                         <td className="hidden max-w-32 truncate px-3 py-2 text-neutral-500 xl:table-cell">{p.team}</td>

@@ -49,4 +49,18 @@ describe("computeBands — §6.2 percentili del fair seed", () => {
     const second = computeBands(input);
     expect(second).toEqual(first);
   });
+
+  it("un grosso gruppo di riserve tutte con lo stesso fair_seed di pavimento resta in D, non finisce in B/C insieme ai titolari (bug reale sui portieri di riserva: molti condividono lo stesso FVM minimo, che coincide con p40/p15 e con >= finirebbe promosso)", () => {
+    // 6 riserve tutte a 1 (pavimento) + 4 titolari via via più forti: p40 e p15 cadono
+    // esattamente dentro il gruppo di riserve, quindi il confronto stretto è decisivo.
+    const floor = Array(6).fill(1);
+    const starters = [10, 30, 60, 100];
+    const results = computeBands(playersA([...floor, ...starters]));
+    const byId = new Map(results.map((r) => [r.id, r.fascia]));
+
+    for (let i = 0; i < floor.length; i++) {
+      expect(byId.get(`A${i}-1`)).toBe("D");
+    }
+    expect(byId.get("A9-100")).toBe("S");
+  });
 });

@@ -20,11 +20,17 @@ export interface BandResult {
   fasciaUncertain: boolean;
 }
 
+/**
+ * Confronti stretti (>), non >=: quando molti giocatori di riserva condividono lo stesso
+ * fair_seed di pavimento (es. i portieri di riserva, spesso tutti a quota/FVM minimo), quel
+ * valore può coincidere con p40 e/o p15 stessi. Con >= finirebbero tutti in B o C insieme ai
+ * titolari appena sopra la soglia; con > restano correttamente sotto, in D.
+ */
 function fasciaFromSeed(fairSeed: number, p90: number, p70: number, p40: number, p15: number): Fascia {
-  if (fairSeed >= p90) return "S";
-  if (fairSeed >= p70) return "A";
-  if (fairSeed >= p40) return "B";
-  if (fairSeed >= p15) return "C";
+  if (fairSeed > p90) return "S";
+  if (fairSeed > p70) return "A";
+  if (fairSeed > p40) return "B";
+  if (fairSeed > p15) return "C";
   return "D";
 }
 
