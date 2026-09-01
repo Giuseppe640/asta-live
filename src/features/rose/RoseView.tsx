@@ -36,10 +36,12 @@ export function RoseView() {
         return (
           <div
             key={team.id}
-            className={`min-w-0 overflow-hidden rounded-2xl border shadow-card transition-colors ${
+            className={`min-w-0 rounded-2xl border shadow-card transition-colors ${
               isMine ? "border-brand-500/30 bg-brand-500/[0.06]" : "border-white/10 bg-neutral-900/60"
             } ${isOpen ? "lg:col-span-full" : ""}`}
           >
+            {/* overflow-hidden va su un wrapper interno, non sul grid item: su Chrome un grid item con overflow-hidden viene misurato come alto 0 per il sizing delle righe "auto", facendo iniziare la riga successiva troppo presto e sovrapporsi al contenuto */}
+            <div className="overflow-hidden rounded-2xl">
             <button type="button" onClick={() => setExpanded(isOpen ? null : team.id)} className="flex w-full items-center gap-2.5 p-3.5 text-left">
               <span className="h-3 w-3 shrink-0 rounded-full ring-2 ring-white/10" style={{ backgroundColor: team.color }} />
               <div className="min-w-0 flex-1">
@@ -149,6 +151,7 @@ export function RoseView() {
                 </ul>
               </div>
             )}
+            </div>
           </div>
         );
       })}
