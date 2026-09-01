@@ -1,5 +1,5 @@
 import { percentile } from "./stats";
-import type { Fascia, Role } from "../types";
+import type { Fascia, Role, Starter } from "../types";
 
 /**
  * §6.2 — fasce, calcolate una volta per pack dati sul fair seed, MAI ricalcolate a ogni
@@ -12,7 +12,11 @@ export interface BandInput {
   role: Role;
   fairSeed: number | null;
   fasciaOverride?: Fascia;
+  starter?: Starter;
 }
+
+/** Sotto questa soglia il pool "titolari" di un ruolo è troppo piccolo per soglie affidabili: si torna al gruppo intero. */
+const MIN_REFERENCE_POOL = 4;
 
 export interface BandResult {
   id: string;
@@ -45,7 +49,15 @@ export function computeBands(players: BandInput[]): BandResult[] {
   const results: BandResult[] = [];
 
   for (const group of byRole.values()) {
-    const knownValues = group
+    // Le soglie si calcolano solo su chi ha davvero un posto in squadra (non riserva/out): un
+    // ruolo con tante riserve irrilevanti (es. il 60% dei portieri di riserva, spesso a quota
+    // minima) abbasserebbe le soglie e promuoverebbe "il meno peggio delle riserve" in una fascia
+    // che non gli spetta — es. il titolare di una squadra debole, che finiva comunque promosso
+    // solo perché il resto del ruolo era ancora più scarso di lui.
+    const meaningful = group.filter((p) => p.starter !== "riserva" && p.starter !== "out");
+    const referenceGroup = meaningful.length >= MIN_REFERENCE_POOL ? meaningful : group;
+
+    const knownValues = referenceGroup
       .map((p) => p.fairSeed)
       .filter((v): v is number => v != null);
 

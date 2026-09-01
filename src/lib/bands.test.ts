@@ -63,4 +63,38 @@ describe("computeBands — §6.2 percentili del fair seed", () => {
     }
     expect(byId.get("A9-100")).toBe("S");
   });
+
+  it("le soglie si calcolano solo su titolari/ballottaggio/rotazione: un titolare modesto di una rosa debole non è più promosso solo perché il resto del ruolo è pieno di riserve (caso reale: il portiere di una squadra piccola in fascia 'molto forte')", () => {
+    const backups: BandInput[] = Array.from({ length: 6 }, (_, i) => ({
+      id: `bench${i}`,
+      role: "P",
+      fairSeed: 5 + i,
+      starter: "riserva",
+    }));
+    const starters: BandInput[] = [12, 30, 55, 80].map((v, i) => ({
+      id: `starter${i}-${v}`,
+      role: "P",
+      fairSeed: v,
+      starter: "fisso",
+    }));
+
+    const results = computeBands([...backups, ...starters]);
+    const byId = new Map(results.map((r) => [r.id, r.fascia]));
+
+    expect(byId.get("starter0-12")).toBe("D");
+    expect(byId.get("starter3-80")).toBe("S");
+  });
+
+  it("con meno di 4 titolari/ballottaggio in un ruolo, le soglie tornano a considerare tutto il gruppo (niente crash, nessuna fascia mancante)", () => {
+    const players: BandInput[] = [
+      { id: "s1", role: "P", fairSeed: 50, starter: "fisso" },
+      { id: "b1", role: "P", fairSeed: 10, starter: "riserva" },
+      { id: "b2", role: "P", fairSeed: 20, starter: "riserva" },
+    ];
+
+    const results = computeBands(players);
+
+    expect(results).toHaveLength(3);
+    expect(results.every((r) => ["S", "A", "B", "C", "D"].includes(r.fascia))).toBe(true);
+  });
 });

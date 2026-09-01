@@ -226,7 +226,9 @@ export function computeRecentPicks(players: Player[], teams: FantasyTeam[], even
 }
 
 export function recomputeBandsInPlace(players: Player[]): Player[] {
-  const results = computeBands(players.map((p) => ({ id: p.id, role: p.role, fairSeed: p.pricing.fairSeed, fasciaOverride: p.fasciaOverride })));
+  const results = computeBands(
+    players.map((p) => ({ id: p.id, role: p.role, fairSeed: p.pricing.fairSeed, fasciaOverride: p.fasciaOverride, starter: p.starter })),
+  );
   const byId = new Map(results.map((r) => [r.id, r]));
   return players.map((p) => {
     const r = byId.get(p.id);

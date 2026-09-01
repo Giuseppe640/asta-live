@@ -101,7 +101,7 @@ export function runSimulation(
   });
 
   // --- 2. fasce, calcolate una sola volta sul pack (§6.2) — mai più ricalcolate ---
-  const bandInputs: BandInput[] = players.map((p) => ({ id: p.id, role: p.role, fairSeed: p.fairSeed }));
+  const bandInputs: BandInput[] = players.map((p) => ({ id: p.id, role: p.role, fairSeed: p.fairSeed, starter: p.starter }));
   const fasciaFrozen = new Map<string, Fascia>();
   for (const b of computeBands(bandInputs)) {
     const p = players.find((pl) => pl.id === b.id)!;

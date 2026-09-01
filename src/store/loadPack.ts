@@ -34,6 +34,7 @@ export function buildInitialPlayers(raw: RawPlayer[]): Player[] {
     role: p.raw.role,
     fairSeed: p.fairSeed,
     fasciaOverride: p.raw.fasciaOverride,
+    starter: p.raw.starter,
   }));
   const bandById = new Map(computeBands(bandInputs).map((b) => [b.id, b]));
 
