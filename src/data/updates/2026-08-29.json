@@ -189,8 +189,8 @@
     },
     {
       "id": "4485",
-      "starter": "fisso",
-      "starterPct": 85
+      "starter": "ballottaggio",
+      "starterPct": 55
     },
     {
       "id": "7301",
@@ -260,7 +260,7 @@
     {
       "id": "7457",
       "starter": "ballottaggio",
-      "starterPct": 45
+      "starterPct": 20
     },
     {
       "id": "5320",
@@ -269,8 +269,8 @@
     },
     {
       "id": "6534",
-      "starter": "ballottaggio",
-      "starterPct": 55
+      "starter": "fisso",
+      "starterPct": 75
     },
     {
       "id": "7363",
