@@ -325,7 +325,7 @@
     {
       "id": "6435",
       "starter": "ballottaggio",
-      "starterPct": 46
+      "starterPct": 30
     },
     {
       "id": "4371",
@@ -334,8 +334,8 @@
     },
     {
       "id": "2137",
-      "starter": "ballottaggio",
-      "starterPct": 58
+      "starter": "fisso",
+      "starterPct": 75
     },
     {
       "id": "5918",
@@ -430,7 +430,7 @@
     {
       "id": "6675",
       "starter": "ballottaggio",
-      "starterPct": 46
+      "starterPct": 50
     },
     {
       "id": "4359",
@@ -670,7 +670,7 @@
     {
       "id": "7017",
       "starter": "ballottaggio",
-      "starterPct": 55
+      "starterPct": 65
     },
     {
       "id": "7128",
@@ -695,7 +695,7 @@
     {
       "id": "5559",
       "starter": "ballottaggio",
-      "starterPct": 58
+      "starterPct": 65
     },
     {
       "id": "7357",
@@ -1130,7 +1130,7 @@
     {
       "id": "7071",
       "starter": "ballottaggio",
-      "starterPct": 55
+      "starterPct": 35
     },
     {
       "id": "2764",
@@ -1139,8 +1139,8 @@
     },
     {
       "id": "4871",
-      "starter": "ballottaggio",
-      "starterPct": 55
+      "starter": "fisso",
+      "starterPct": 75
     },
     {
       "id": "1870",
@@ -1185,7 +1185,7 @@
     {
       "id": "152",
       "starter": "ballottaggio",
-      "starterPct": 55
+      "starterPct": 48
     },
     {
       "id": "4159",
@@ -1200,7 +1200,7 @@
     {
       "id": "6217",
       "starter": "ballottaggio",
-      "starterPct": 55
+      "starterPct": 58
     },
     {
       "id": "5877",
@@ -1215,7 +1215,7 @@
     {
       "id": "4177",
       "starter": "ballottaggio",
-      "starterPct": 45
+      "starterPct": 30
     },
     {
       "id": "5982",
@@ -1635,7 +1635,7 @@
     {
       "id": "2606",
       "starter": "ballottaggio",
-      "starterPct": 55
+      "starterPct": 58
     },
     {
       "id": "6372",
@@ -1649,13 +1649,13 @@
     },
     {
       "id": "2423",
-      "starter": "ballottaggio",
-      "starterPct": 45
+      "starter": "fisso",
+      "starterPct": 80
     },
     {
       "id": "2379",
-      "starter": "ballottaggio",
-      "starterPct": 45
+      "starter": "fisso",
+      "starterPct": 78
     },
     {
       "id": "4892",
@@ -1865,7 +1865,7 @@
     {
       "id": "2517",
       "starter": "ballottaggio",
-      "starterPct": 50
+      "starterPct": 55
     },
     {
       "id": "5131",
@@ -2065,7 +2065,7 @@
     {
       "id": "6572",
       "starter": "ruota",
-      "starterPct": 40
+      "starterPct": 35
     },
     {
       "id": "309",
@@ -2155,7 +2155,7 @@
     {
       "id": "4998",
       "starter": "ballottaggio",
-      "starterPct": 50
+      "starterPct": 40
     },
     {
       "id": "4317",
@@ -2399,8 +2399,8 @@
     },
     {
       "id": "5637",
-      "starter": "ballottaggio",
-      "starterPct": 58
+      "starter": "fisso",
+      "starterPct": 85
     },
     {
       "id": "7272",
