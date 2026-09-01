@@ -1,17 +1,24 @@
 import { useMemo, useState } from "react";
-import { ChevronDown, Search, UserCheck } from "lucide-react";
+import { ChevronDown, Gavel, Search, UserCheck } from "lucide-react";
 import { useAuctionStore } from "../../store/useAuctionStore";
 import { useIsDesktop } from "../../hooks/useMediaQuery";
 import { ConfidenceDot, FASCIA_NAMES, FasciaBadge, RoleBadge, StarterBadge } from "../../components/Badges";
 import { ScoutingTable, type SortDir, type SortKey } from "./ScoutingTable";
 import { groupByFascia, groupKey, type FasciaGroup } from "./groupByFascia";
 import { WATCH_OPTIONS } from "./watchOptions";
-import type { Role } from "../../types";
+import { TeamPickerModal } from "../asta/TeamPickerModal";
+import type { Player, Role } from "../../types";
+
+function defaultQuickPrice(player: Player): number {
+  return Math.max(1, Math.round((player.pricing.fairSeed ?? 10) * 0.6));
+}
 
 export function ScoutingView() {
   const players = useAuctionStore((s) => s.players);
   const teams = useAuctionStore((s) => s.teams);
+  const myTeamId = useAuctionStore((s) => s.myTeamId);
   const setWatch = useAuctionStore((s) => s.setWatch);
+  const assign = useAuctionStore((s) => s.assign);
   const isDesktop = useIsDesktop();
 
   const [query, setQuery] = useState("");
@@ -20,6 +27,26 @@ export function ScoutingView() {
   const [sortBy, setSortBy] = useState<SortKey>("valore");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [expandOverrides, setExpandOverrides] = useState<Record<string, boolean>>({});
+  const [assigningPlayer, setAssigningPlayer] = useState<Player | null>(null);
+  const [assignPrice, setAssignPrice] = useState(1);
+  const [assignError, setAssignError] = useState<string | null>(null);
+
+  function openAssign(player: Player) {
+    setAssigningPlayer(player);
+    setAssignPrice(defaultQuickPrice(player));
+    setAssignError(null);
+  }
+
+  function confirmAssign(teamId: string) {
+    if (!assigningPlayer) return;
+    const result = assign(assigningPlayer.id, teamId, assignPrice);
+    if (!result.ok) {
+      setAssignError(result.reason ?? "Errore sconosciuto");
+      return;
+    }
+    setAssigningPlayer(null);
+    setAssignError(null);
+  }
 
   const teamById = useMemo(() => new Map(teams.map((t) => [t.id, t])), [teams]);
 
@@ -98,12 +125,14 @@ export function ScoutingView() {
       </div>
 
       <p className="text-xs font-medium text-neutral-500">{rows.length} giocatori</p>
+      {assignError && <p className="rounded-lg bg-rose-500/10 px-3 py-2 text-sm font-medium text-rose-400">{assignError}</p>}
 
       {isDesktop ? (
         <ScoutingTable
           groups={groups}
           teamById={teamById}
           setWatch={setWatch}
+          onAssign={openAssign}
           sortBy={sortBy}
           sortDir={sortDir}
           onSort={handleSort}
@@ -171,7 +200,7 @@ export function ScoutingView() {
                                 {assignedTeam.name} @ {p.price}
                               </span>
                             ) : (
-                              <div className="flex gap-1">
+                              <div className="flex items-center gap-1">
                                 {WATCH_OPTIONS.map((opt) => (
                                   <button
                                     key={opt.label}
@@ -185,6 +214,15 @@ export function ScoutingView() {
                                     {opt.label}
                                   </button>
                                 ))}
+                                <button
+                                  type="button"
+                                  title={`Assegna ${p.name} a una squadra`}
+                                  onClick={() => openAssign(p)}
+                                  className="flex h-7 items-center gap-1 rounded-md bg-brand-500/15 px-2 text-[11px] font-bold text-brand-300 transition-colors active:bg-brand-500/25"
+                                >
+                                  <Gavel className="h-3 w-3" />
+                                  Assegna
+                                </button>
                               </div>
                             )}
                             {p.rumor && <span className="truncate text-[11px] italic text-neutral-600">{p.rumor}</span>}
@@ -198,6 +236,19 @@ export function ScoutingView() {
             );
           })}
         </div>
+      )}
+
+      {assigningPlayer && (
+        <TeamPickerModal
+          variant={isDesktop ? "dialog" : "sheet"}
+          teams={teams}
+          myTeamId={myTeamId}
+          playerName={assigningPlayer.name}
+          price={assignPrice}
+          onPriceChange={setAssignPrice}
+          onPick={confirmAssign}
+          onClose={() => setAssigningPlayer(null)}
+        />
       )}
     </div>
   );

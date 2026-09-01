@@ -1,3 +1,4 @@
+import { Minus, Plus } from "lucide-react";
 import type { FantasyTeam } from "../../types";
 
 export function TeamPickerModal({
@@ -6,6 +7,7 @@ export function TeamPickerModal({
   myTeamId,
   playerName,
   price,
+  onPriceChange,
   onPick,
   onClose,
 }: {
@@ -14,10 +16,13 @@ export function TeamPickerModal({
   myTeamId: string;
   playerName: string | undefined;
   price: number;
+  /** Se presente, il prezzo è modificabile qui (es. assegnazione rapida da Scouting); altrimenti solo testo fisso, già deciso altrove (Battitore). */
+  onPriceChange?: (price: number) => void;
   onPick: (teamId: string) => void;
   onClose: () => void;
 }) {
   const isSheet = variant === "sheet";
+  const bump = (delta: number) => onPriceChange?.(Math.max(1, price + delta));
 
   return (
     <div
@@ -33,10 +38,48 @@ export function TeamPickerModal({
         onClick={(e) => e.stopPropagation()}
       >
         {isSheet && <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-white/10" />}
-        <p className="mb-3 text-center text-sm text-neutral-400">
-          Assegna <span className="font-semibold text-neutral-100">{playerName}</span> a{" "}
-          <span className="font-semibold text-neutral-100">{price}</span> crediti a…
-        </p>
+        {onPriceChange ? (
+          <>
+            <p className="mb-2 text-center text-sm text-neutral-400">
+              Assegna <span className="font-semibold text-neutral-100">{playerName}</span> a…
+            </p>
+            <div className="mb-3 flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => bump(-5)}
+                className="flex h-10 min-w-10 items-center justify-center rounded-xl bg-white/5 text-neutral-200 transition-colors active:bg-white/10"
+              >
+                <Minus className="h-4 w-4" />
+              </button>
+              <input
+                type="number"
+                inputMode="numeric"
+                value={price}
+                onChange={(e) => onPriceChange(Math.max(1, Number(e.target.value) || 1))}
+                className="font-display h-10 w-0 min-w-0 flex-1 rounded-xl border border-white/10 bg-black/30 text-center text-lg font-bold tabular-nums text-neutral-100 outline-none focus:border-brand-500/50"
+              />
+              <button
+                type="button"
+                onClick={() => bump(5)}
+                className="flex h-10 min-w-10 items-center justify-center rounded-xl bg-white/5 text-neutral-200 transition-colors active:bg-white/10"
+              >
+                <Plus className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => bump(10)}
+                className="h-10 min-w-12 rounded-xl bg-white/5 text-sm font-bold text-neutral-200 transition-colors active:bg-white/10"
+              >
+                +10
+              </button>
+            </div>
+          </>
+        ) : (
+          <p className="mb-3 text-center text-sm text-neutral-400">
+            Assegna <span className="font-semibold text-neutral-100">{playerName}</span> a{" "}
+            <span className="font-semibold text-neutral-100">{price}</span> crediti a…
+          </p>
+        )}
         <div className="grid grid-cols-2 gap-2">
           {teams.map((t) => (
             <button

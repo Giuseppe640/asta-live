@@ -1,9 +1,9 @@
 import { Fragment } from "react";
-import { ArrowDown, ArrowUp, ArrowUpDown, ChevronDown, UserCheck } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown, ChevronDown, Gavel, UserCheck } from "lucide-react";
 import { ConfidenceDot, FASCIA_NAMES, FasciaBadge, RoleBadge, StarterBadge } from "../../components/Badges";
 import { groupKey, type FasciaGroup } from "./groupByFascia";
 import { WATCH_OPTIONS } from "./watchOptions";
-import type { FantasyTeam, Role, Watch } from "../../types";
+import type { FantasyTeam, Player, Role, Watch } from "../../types";
 
 export type SortKey = "valore" | "affidabilita";
 export type SortDir = "asc" | "desc";
@@ -43,6 +43,7 @@ export function ScoutingTable({
   groups,
   teamById,
   setWatch,
+  onAssign,
   sortBy,
   sortDir,
   onSort,
@@ -53,6 +54,7 @@ export function ScoutingTable({
   groups: FasciaGroup[];
   teamById: Map<string, FantasyTeam>;
   setWatch: (playerId: string, watch: Watch | undefined) => void;
+  onAssign: (player: Player) => void;
   sortBy: SortKey;
   sortDir: SortDir;
   onSort: (key: SortKey) => void;
@@ -149,7 +151,7 @@ export function ScoutingTable({
                               {assignedTeam.name} @ {p.price}
                             </span>
                           ) : (
-                            <div className="flex gap-1">
+                            <div className="flex items-center gap-1">
                               {WATCH_OPTIONS.map((opt) => (
                                 <button
                                   key={opt.label}
@@ -163,6 +165,15 @@ export function ScoutingTable({
                                   {opt.label}
                                 </button>
                               ))}
+                              <button
+                                type="button"
+                                title={`Assegna ${p.name} a una squadra`}
+                                onClick={() => onAssign(p)}
+                                className="flex h-7 items-center gap-1 rounded-md bg-brand-500/15 px-2 text-[11px] font-bold text-brand-300 transition-colors hover:bg-brand-500/25"
+                              >
+                                <Gavel className="h-3 w-3" />
+                                Assegna
+                              </button>
                             </div>
                           )}
                         </td>
