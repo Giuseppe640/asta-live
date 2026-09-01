@@ -199,11 +199,16 @@ export function computeRecentPicks(players: Player[], teams: FantasyTeam[], even
   const playerById = new Map(players.map((p) => [p.id, p]));
   const teamById = new Map(teams.map((t) => [t.id, t]));
   const picks: RecentPick[] = [];
+  const seenPlayerIds = new Set<string>();
 
   for (let i = events.length - 1; i >= 0 && picks.length < limit; i -= 1) {
     const event = events[i];
     if (event.type !== "assign" && event.type !== "resolve_conflict") continue;
     if (!event.playerId || !event.teamId || event.price == null) continue;
+    // solo l'evento assign/resolve_conflict più recente per ogni giocatore: un eco di sync
+    // (stesso esito riproposto con un id evento diverso) non deve comparire come pick separato.
+    if (seenPlayerIds.has(event.playerId)) continue;
+    seenPlayerIds.add(event.playerId);
 
     const player = playerById.get(event.playerId);
     if (!player || player.assignedTo !== event.teamId || player.price !== event.price) continue;
