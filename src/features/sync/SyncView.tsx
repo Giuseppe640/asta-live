@@ -106,7 +106,10 @@ export function SyncView() {
   }
 
   function handleReset() {
-    if (!window.confirm("Azzerare l'asta corrente e ripartire dal pack seed? L'azione è locale ma cancella tutte le assegnazioni fatte finora.")) {
+    const roomWarning = roomCode
+      ? " Sei in una stanza condivisa: si azzera anche per gli altri dispositivi collegati, non solo su questo."
+      : "";
+    if (!window.confirm(`Azzerare l'asta corrente e ripartire dal pack seed? Cancella tutte le assegnazioni fatte finora.${roomWarning}`)) {
       return;
     }
     hardReset(getMergedRawPlayers(), teamsSeed as FantasyTeam[], myTeamId || "eren-jagermeister");

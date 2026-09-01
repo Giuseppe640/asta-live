@@ -4,7 +4,7 @@ import { idbStorage } from "./db";
 import { buildInitialPlayers, type RawPlayer } from "./loadPack";
 import { computeTeamBudget, recomputeBandsInPlace } from "./selectors";
 import { ROLE_SLOTS } from "../lib/constants";
-import { isSyncConfigured, pushEventToRoom, subscribeToRoom } from "./firebaseSync";
+import { clearRoom, isSyncConfigured, pushEventToRoom, subscribeToRoom } from "./firebaseSync";
 import type { AuctionEvent, FantasyTeam, Fascia, Player, TeamProfile, Watch } from "../types";
 
 export interface AssignResult {
@@ -221,6 +221,12 @@ export const useAuctionStore = create<AuctionStore>()(
       },
 
       hardReset: (rawPlayers, rawTeams, myTeamId) => {
+        const state = get();
+        // Azzera anche la stanza condivisa, non solo lo stato locale: altrimenti un dispositivo
+        // che si ricollega (o anche solo ricarica la pagina, che riaggancia da sola l'ultima
+        // stanza) riceve di nuovo tutto lo storico eventi via sync e resuscita le assegnazioni
+        // appena cancellate.
+        if (state.roomCode) clearRoom(state.roomCode);
         set({
           players: buildInitialPlayers(rawPlayers),
           teams: rawTeams,

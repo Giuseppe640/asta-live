@@ -31,6 +31,18 @@ export function pushEventToRoom(roomCode: string, event: AuctionEvent): void {
 }
 
 /**
+ * Svuota lo storico eventi della stanza su Firebase. Serve ad "Azzera asta": senza questo,
+ * un dispositivo che si ricollega (o ricarica la pagina, che riaggancia da sola l'ultima
+ * stanza) riceve di nuovo TUTTO lo storico via onChildAdded e resuscita le assegnazioni
+ * cancellate solo in locale — l'azzeramento deve valere anche per la stanza condivisa.
+ */
+export function clearRoom(roomCode: string): void {
+  const database = getDb();
+  if (!database) return;
+  void dbSet(ref(database, eventsPath(roomCode)), null);
+}
+
+/**
  * Si iscrive alla stanza: `onEvent` viene chiamato per ogni evento già presente (storico,
  * in ordine di scrittura) e poi per ogni nuovo evento che arriva da qualsiasi dispositivo,
  * incluso il proprio (lo store deduplica per id).
