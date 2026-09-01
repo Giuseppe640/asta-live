@@ -47,6 +47,7 @@ export function RoseView() {
                   {team.name}
                   {isMine && <Sparkles className="h-3.5 w-3.5 shrink-0 text-brand-400" />}
                 </p>
+                {team.president && <p className="truncate text-[11px] text-neutral-500">{team.president}</p>}
                 <p className="text-xs text-neutral-500">
                   {team.roster.length}/25 · speso {budget.spent} · rimasti {budget.remaining}
                 </p>

@@ -75,6 +75,7 @@ export interface RosterEntry {
 export interface FantasyTeam {
   id: string;
   name: string;
+  president?: string;
   color: string;
   budget: 1000;
   spent: number;
